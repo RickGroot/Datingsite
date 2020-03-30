@@ -1,13 +1,10 @@
 body {
-    background-image: url(../img/background.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-attachment: fixed;
-    object-fit: cover;
+    font-family: 'Helvetica';
+    background: linear-gradient(225deg, rgb(247, 132, 170) 25%, rgb(250, 153, 169) 75%);
     padding: 0;
     margin: 0;
-    font-family: 'Open Sans', ;
 }
+
 
 nav {
     position: block;
