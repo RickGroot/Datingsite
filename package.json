@@ -1,10 +1,11 @@
 {
   "name": "templating",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "voor project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +15,17 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "mongodb": "^3.5.4",
-    "slug": "^2.1.1"
+    "slug": "^2.1.1",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.4",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^6.8.0",
+    "nodemon": "^1.19.4"
   }
 }

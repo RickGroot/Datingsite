@@ -1,4 +1,4 @@
-
+<!-- Code van Max -->
 
 <link rel="stylesheet" href="/styles.css" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
@@ -6,7 +6,7 @@
 
       <form action="/users/login" method="POST" class="form2">
         <h1 > Login</h1>
-        <% include ./partials/messages %>
+        <%- include('./partials/messages'); -%>
     
           <label for="email">Email</label>
           <input
