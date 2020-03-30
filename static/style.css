@@ -1,0 +1,143 @@
+body {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', ;
+}
+
+nav {
+    position: block;
+    display: flex;
+    background-color: white;
+    height: 80px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+}
+
+nav img {
+    max-height: 100%;
+    height: auto;
+    margin-left: 3vw;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-self: center;
+    width: 40vw;
+    list-style-type: none;
+}
+
+li a {
+    display: block;
+    padding: auto;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 3vw;
+}
+
+article {
+    position: relative;
+    border-radius: 15px;
+    width: 500px;
+    margin: auto;
+    margin-bottom: 7vw;
+    background-color: aqua;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+article div img {
+    border-radius: 15px 15px 0px 0px;
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    width: 1000px;
+    object-fit: cover;
+}
+
+section {
+    border-radius: 0px 0px 15px 15px;
+    height: auto;
+    max-height: 100%;
+    background-color: white;
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 2vw;
+    padding-bottom: 4vw;
+}
+
+section h1 {
+    font-size: 2.5em;
+    margin: 2px;
+}
+
+section h2 {
+    font-size: 1.5em;
+    margin: 2px;
+}
+
+section button {
+    position: absolute;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    border-style: none;
+    background-color: red;
+    color: white;
+    right: -30px;
+}
+
+
+section .more {
+    position: absolute;
+    width: 100%;
+    right: -50%;
+    bottom: 5px;
+    color: black;
+}
+
+ul.filter {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(32, 0, 27);
+    width: 100vw;
+    height: 50px;
+  }
+
+.filter li a:hover {
+    color: pink;
+}
+  
+.filter li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
