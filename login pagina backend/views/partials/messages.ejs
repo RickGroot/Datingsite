@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/styles.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+<% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+<div class="test">
+  <%= error.msg %>
+</div>
+
+<% }); %> <% } %> <% if(success_msg != ''){ %>
+<div class="test2">
+  <%= success_msg %>
+</div>
+
+<% } %> <% if(error_msg != ''){ %>
+<div class="test">
+  <%= error_msg %>
+</div>
+
+<% } %> <% if(error != ''){ %>
+<div class="test">  
+  <%= error %>
+</div>
+<% } %>
+
+<!-- error berichten -->
