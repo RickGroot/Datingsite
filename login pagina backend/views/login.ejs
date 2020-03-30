@@ -1,0 +1,32 @@
+
+
+<link rel="stylesheet" href="/styles.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+<main>
+
+      <form action="/users/login" method="POST" class="form2">
+        <h1 > Login</h1>
+        <% include ./partials/messages %>
+    
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+          />
+
+          <label for="password">Wachtwoord</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Wachtwoord"
+          />
+        <button type="submit" class="submit">Inloggen</button>
+     <a href="/users/register">Klik hier om je te registreren</a>
+      </form>
+    </main>
+
+
+<!--inlogpagina  -->
