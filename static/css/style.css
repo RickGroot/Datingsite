@@ -3,7 +3,7 @@
 body {
     font-family: 'Helvetica';
     background: linear-gradient(225deg, rgb(247, 132, 170) 25%, rgb(250, 153, 169) 75%);
-    padding-bottom: 1200px;
+    padding-bottom: 100px;
     margin: 0;
 }
 
@@ -292,7 +292,8 @@ input[type=radio] {
 }
 
 .geslacht input[type="radio"]:checked+label {
-    background-color: rgb(56, 207, 68);
+    background-color: rgb(244, 59, 121);
+    color: white;
 }
 
 #afbeelding-toevoegen{
