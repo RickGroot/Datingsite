@@ -1,53 +1,11 @@
 body {
-    font-family: 'Helvetica';
-    background: linear-gradient(225deg, rgb(247, 132, 170) 25%, rgb(250, 153, 169) 75%);
-    padding: 0;
-    margin: 0;
+    font-family: 'Oswald';
+    background-color: rgb(245, 215, 215);
+    background-image: url('bg3.jpg');
+    background-repeat: no-repeat;
 }
 
-nav {
-    position: block;
-    display: flex;
-    background-color: white;
-    height: 80px;
-    width: 100%;
-    justify-content: space-between;
-    margin: 0;
-}
-
-nav img {
-    max-height: 100%;
-    height: auto;
-    margin-left: 3vw;
-}
-
-ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-self: center;
-    width: 40vw;
-    list-style-type: none;
-}
-
-
-#not-found {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-#list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-top: 3vw;
-}
-
-form,
-.main {
+form, .main{
     background-color: rgba(71, 71, 71, 0.856);
     width: 500px;
     height: 650px;
@@ -67,147 +25,49 @@ form,
     margin-left: 10%;
 }
 
-article {
-    position: relative;
-    border-radius: 15px;
-    width: 500px;
-    margin: auto;
-    margin-bottom: 7vw;
-    background-color: aqua;
-}
 
-
-.image {
-    position: relative;
-    width: 100%;
-    height: 400px;
-}
-
-article div img {
-    border-radius: 15px 15px 0px 0px;
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-    width: 1000px;
-    object-fit: cover;
-}
-
-#email,
-#name {
-    width: 85%;
-    color: rgb(71, 71, 71);
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background: rgb(196, 196, 196);
-    outline: none;
-    border: 2px solid rgba(252, 252, 252, 0.089);
-    margin-bottom: 27px;
-    font-family: 'Oswald';
-    text-align: center;
+#email, #name {
+width: 85%;
+color: rgb(71, 71, 71);
+font-size: 20px;
+padding: 10px 20px;
+border-radius: 20px;
+background:rgb(196, 196, 196);
+outline: none;
+border: 2px solid rgba(252, 252, 252, 0.089);
+margin-bottom: 27px;
+font-family: 'Oswald';
+text-align: center;
 }
 
 form {
     padding-top: 0px;
     text-align: center;
+
 }
 
-#password,
-#password2 {
+#password, #password2 {
     width: 85%;
-    color: rgb(51, 51, 51);
-    font-size: 20px;
-    background: rgb(196, 196, 196);
-    padding: 10px 20px;
-    border-radius: 20px;
-    outline: none;
-    border: 2px solid rgba(0, 0, 0, 0.02);
-    text-align: center;
-    margin-bottom: 50px;
-    font-family: 'Oswald'
+color: rgb(51, 51, 51);
+font-size: 20px;
+background: rgb(196, 196, 196);
+padding: 10px 20px;
+border-radius: 20px;
+outline: none;
+border: 2px solid rgba(0, 0, 0, 0.02);
+text-align: center;
+margin-bottom: 50px;
+font-family: 'Oswald' 
 
 }
 
-h1 {
-    color: black;
-    font-size: 4em;
-    margin: auto;
-    margin-top: 30vh;
-}
-
-label {
+h1, label{
     color: white;
 }
 
-section {
-    border-radius: 0px 0px 15px 15px;
-    height: auto;
-    max-height: 100%;
-    background-color: white;
-    position: relative;
-    display: block;
-    margin: 0;
-    padding: 2vw;
-    padding-bottom: 4vw;
-}
-
-section h1 {
-    font-size: 2.5em;
-    margin: 2px;
-}
-
-section h2 {
-    font-size: 1.5em;
-    margin: 2px;
-}
-
-section button {
-    position: absolute;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    border-style: none;
-    background-color: red;
-    color: white;
-    right: -30px;
-}
-
-
-section .more {
-    position: absolute;
-    width: 100%;
-    right: -50%;
-    bottom: 5px;
-    color: black;
-}
-
-ul.filter {
-    align-items: center;
-    justify-content: space-around;
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(32, 0, 27);
-    width: 100vw;
-    height: 50px;
-}
-
-.filter li a:hover {
-    color: pink;
-}
-
-.filter li a {
-    display: block;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
 
 .submit {
-    cursor: pointer;
+  cursor: pointer;
     border-radius: 5em;
     color: white;
     background: rgb(139, 139, 139);
@@ -220,31 +80,21 @@ ul.filter {
 }
 
 a {
-    color: white;
+    color:white;
     text-decoration: none;
     text-align: center;
     margin: 0 auto;
     display: block;
+    margin-top: 3%;
+
 }
 
-li a {
-    display: block;
-    padding: auto;
-    text-decoration: none;
-    color: black;
-    font-size: 1.5em;
-}
-
-p {
-    font-size: 2em;
-}
-
-.test {
+.test{
     color: red;
     font-size: 1em;
 }
 
-.test2 {
+.test2{
     color: green;
     font-size: 1em;
 }
