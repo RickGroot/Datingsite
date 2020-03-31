@@ -1,15 +1,17 @@
-// Deze code is gemixt van Max en Rick, login code is van Max en de filter/lijst code van Rick.
+// Deze code is gemixt van Max, Rick en Susanne, login code is van Max & Susanne en de filter/lijst code van Rick.
 // extentions koppelen & express initialiseren
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-const app = express();
 const mongoose = require('mongoose');
-const port = 8080;
 const slug = require('slug');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const multer = require('multer'); 
+const upload = multer({dest: 'static/upload/'}); 
+const app = express();
+const port = 8080;
 
 // Code van Rick
 // MongoDB koppelen, de database geeft toegang aan alle IP's
@@ -42,7 +44,8 @@ app
     .use(passport.initialize())
     .use(passport.session())
     .use(flash())
-    
+
+
 // code van Max
 // Express session
 app.use(
@@ -182,17 +185,14 @@ const me = {
 }
 
 const style = {
-  list: '/style.css',
-  quiz: '/quiz.css',
-  profile: '/profile.css',
-  notfound: '/notfound.css'
+  list: '/css/style.css',
 }
 
 // 404 page function
 app.get('*', (req,res) => {
     res.status(404).render('pages/not-found.ejs', {
       name: me.name,
-    style: style.notfound});
+    style: style.list});
 });
 
 // luisteren op poort
