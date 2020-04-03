@@ -1,0 +1,29 @@
+<!-- Code van Rick -->
+<%- include('partials/head'); -%>
+<%- include('partials/nav'); -%>
+<title>Datingsite</title>
+
+<body class="body-filteren">
+<%- include('partials/checkbox'); -%>
+<main id="list">
+    <!-- Bij de volgende functie wordt er door een array gebladerd, en word elk object in de array apart gerenderd. -->
+    <% for (var index = 0; index < persons.length; index++) { %>
+    <article>
+        <div class=image><img src="<%= persons[index].img %>" alt="<%= persons[index].name %>"></div>
+        <section>
+            <h1><%= persons[index].name %></h1>
+            <h2><%= persons[index].age %></h2>
+            <h2><%= persons[index].hobby %></h2>
+            <!-- <h2><%= persons[index].city %></h2>
+            <h2><%= persons[index].looking %></h2>
+            <h2><%= persons[index].birth %></h2>
+            <h2><%= persons[index].animal %></h2>
+            <h2><%= persons[index].color %></h2> -->
+            <a href="info.html" class="more"><span id="dropdown" class="fas fa-caret-down fa-3x"></span></a>
+            <a href="<%= persons[index].id %>"><button class='match'><i class="fas fa-heart fa-3x"></i></button></a>
+        </section>
+    </article>
+    <% } %>
+</main>
+
+<%- include('partials/footer'); -%>

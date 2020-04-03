@@ -2,7 +2,9 @@
 <html lang="nl">
 
 <head>
-    <%- include ("head.ejs") %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Gegevens</title>
 </head>
 
@@ -63,7 +65,7 @@
 
             <label>Voeg afbeelding toe:</label>
 
-            <label for="file"><img id="afbeelding-toevoegen" src="static/images/afbeelding.png"
+            <label for="file"><img id="afbeelding-toevoegen" src="img/afbeelding.png"
                     alt="profiel foto"></label>
             <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
                 style="display: none;">
