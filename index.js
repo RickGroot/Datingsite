@@ -1,7 +1,6 @@
 // Deze code is gemixt van Suus, Max en Rick, Registreer en login code is van Suus, Chatfunctie is van Max en de filter/lijst code van Rick.
 // extentions koppelen & express initialiseren
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
 const multer = require('multer');
 const upload = multer({dest: 'static/upload/'});
 const mongoose = require('mongoose');
@@ -34,7 +33,6 @@ app
     .use('/man', man)
     .use('/reload', reload)
     .use(bodyParser.urlencoded({extended: true}))
-    .use(expressLayouts)
     .use(session({
       resave: false,
       saveUninitialized: true,
@@ -219,8 +217,8 @@ const me = {
 }
 
 const style = {
-list: '/static/css/style.css',
-notfound: '/static/css/style.css'
+list: 'style.css',
+notfound: 'style.css'
 }
 
 // 404 page function
