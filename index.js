@@ -15,6 +15,7 @@ const port = 8080;
 
 // Code van Rick
 // MongoDB koppelen, de database geeft toegang aan alle IP's
+//Dit gaat over de databese MongoDB
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
 let ObjectId = require('mongodb').ObjectID;
 let db = null;
@@ -218,8 +219,8 @@ const me = {
 }
 
 const style = {
-list: '/css/style.css',
-notfound: '/css/style.css'
+list: '/static/css/style.css',
+notfound: '/static/css/style.css'
 }
 
 // 404 page function

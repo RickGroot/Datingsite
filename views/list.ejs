@@ -1,10 +1,10 @@
 <!-- Code van Rick -->
-<%- include('../partials/head'); -%>
-<%- include('../partials/nav'); -%>
+<%- include('partials/head'); -%>
+<%- include('partials/nav'); -%>
 <title>Datingsite</title>
 
 <body class="body-filteren">
-<%- include('../partials/checkbox'); -%>
+<%- include('partials/checkbox'); -%>
 <main id="list">
     <!-- Bij de volgende functie wordt er door een array gebladerd, en word elk object in de array apart gerenderd. -->
     <% for (var index = 0; index < persons.length; index++) { %>
@@ -26,4 +26,4 @@
     <% } %>
 </main>
 
-<%- include('../partials/footer'); -%>
+<%- include('partials/footer'); -%>
