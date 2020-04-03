@@ -1,0 +1,204 @@
+*,
+:before,
+:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+* {
+    line-height: 1.4em;
+    font-family: helvetica;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    width: 100vw;
+    font-family: 'Helvetica';
+    background: linear-gradient(225deg, rgb(247, 132, 170) 25%, rgb(250, 153, 169) 75%);
+    padding-bottom: 100px;
+    margin: 0;
+}
+
+h1 {
+    padding: 0.1em 1.5em 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 1.375em;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    font-size: 1.5em;
+    border-bottom: 1px solid #f43b79;
+}
+
+#bedrijfsnaam{
+    border-bottom: none;
+    color: #f43b79;
+    margin-top: 0.3125em;
+    margin-bottom: 1.75em;
+}
+
+form, section {
+    width: 21.25em;
+    min-height: 65vh;
+    margin: auto;
+    margin-left: 4vw;
+    margin-top: 5vh;
+    margin-bottom: 25vh;
+    background-color: pink;
+    position: absolute;
+    box-shadow: 1px 3px 12px -1px rgba(78, 77, 77, 0.34);
+}
+
+
+fieldset {
+    border: none;
+    padding-top: 1em;
+    color: pink;
+    margin: 0;
+    padding-left: 1em;
+}
+
+fieldset p {
+    color: white;
+}
+
+#login {
+    line-height: 1.7em;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+p>a {
+    color: white;
+    text-decoration: none;
+}
+
+label {
+    color: black;
+    font-size: 0.9em;
+    font-weight: normal;
+    padding-bottom: 0.4em;
+}
+
+input:required {
+    border: 2px solid white;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+    background-color: #ffffff;
+    border: none;
+    margin: 0em 0em 0em;
+    display: block;
+}
+
+input:valid {
+    border: solid 1px rgb(47, 255, 64);
+}
+
+input:invalid {
+    border: 0px solid white;
+}
+
+.volgende {
+    background: #f43b79;
+    width: 100%;
+    color: white;
+    border: none;
+    margin-top: 2em;
+    padding: 0.75em;
+    position: absolute;
+    bottom: -1em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.home{
+    background-color: #f43b79;
+    width: 80%;
+    border-radius: 5%;
+    color: white;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    padding: 1em;
+    text-align: center;
+    margin-left: 10%;
+    font-size: 0.875em;
+}
+
+#logo{
+    width: 6.25em;
+    margin-top: 3em;
+    margin-left: 7.1875em;
+    margin-bottom: 0em;
+}
+
+#welkomstekst{
+    text-align: center;
+    font-size: 0.8em;
+    color: #ffffff;
+}
+
+input[type=radio] {
+    display: none;
+    position: relative;
+    left: -6.25em;
+}
+
+.geslacht label {
+    border: 1px solid black;
+    padding: 0.4em 2em;
+    font-size: 0.9em;
+    background-color: #e9e9e9;
+    border: none;
+    margin: 0em 0em 0em 0em;
+    display: block;
+    border: 1px solid #e9e9e9;
+}
+
+.geslacht{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em 0em;
+    max-width: 20em;
+}
+
+#afbeelding-toevoegen{
+    width: 6.25em;
+    height: 6.25em;
+    display: block;
+    margin-top: 0.625em;
+    margin-bottom: 2.5em;
+}
+
+#profielfoto{
+    width: 18.75em;
+    margin: 1.25em;
+}
+#back{
+    width: 1.875em;
+    margin-left: 0.9375em;
+    margin-top: 1.25em;
+    position: absolute;
+}
+
+h2{
+    margin-left: 1.25em;
+    font-size: 1.3125em;
+    font-weight: 400;
+}
+span{
+    display: block;
+    font-size: 0.9375em;
+    margin-bottom: 3.125em;
+    font-weight: 300;
+}
+
+.geslacht input[type="radio"]:checked+label {
+    background-color: rgb(56, 207, 68);
+}
