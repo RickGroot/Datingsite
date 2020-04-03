@@ -6,8 +6,6 @@ const app = express();
 const mongoose = require('mongoose');
 const port = 8080;
 const slug = require('slug');
-const passport = require('passport');
-const flash = require('connect-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 
@@ -18,10 +16,6 @@ require('dotenv').config();
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
 let ObjectId = require('mongodb').ObjectID;
 let db = null;
-
-// Code van Max
-// configure passport
-require('./config/passport')(passport);
 
 // Code van Rick en Max gemengd
 // views koppelen en routes definiëren
@@ -35,31 +29,8 @@ app
     .use('/vrouw', vrouw)
     .use('/man', man)
     .use('/reload', reload)
-    .use('/', require('./routes/index.js'))
-    .use('/users', require('./routes/users.js'))
     .use(bodyParser.urlencoded({extended: true}))
     .use(expressLayouts)
-    .use(passport.initialize())
-    .use(passport.session())
-    .use(flash())
-    
-// code van Max
-// Express session
-app.use(
-  session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-  })
-);
-
-// error berichten
-app.use(function(req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  next();
-});
 
 // Vanaf hier code van Rick
 // goede database ophalen
