@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <%- include ("head.ejs") %>
+    <title>Gegevens</title>
+</head>
+
+<body>
+    <header>
+        <form action="/inloggen" method="POST">
+
+            <h1 class="register"> Login</h1>
+
+                <label for="userName">Gebruikersnaam:</label>
+                <input name="userName" type="text" id="userName" required> <br>
+
+                <label from='wachtwoord'>Wachtwoord:</label>
+                <input name="password" id='wachtwoord' type="password" pattern=".{8,}" required
+                    title="Minimaal 8 karakters" required>
+                <br>
+
+            <button type="submit" class="submit">Inloggen</button>
+
+            <a id="al-een-account" href="/aanmelden">Heb je nog geen profiel? Klik hier!</a>
+        </form>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <%- include ("head.ejs") %>
+    <title>Gegevens</title>
+</head>
+
+<body>
+    <header>
+        <form class="profiel">
+        <h1 class="register">Jouw profiel</h1>
+        <img src="/static/upload/<%= image %>" alt="profiel foto" id="profielfoto">
+
+        <h2><%= username%><span id="zoek-matches"><%=birthday%></span></h2>
+        <button type="submit" class="submit">Zoek andere singles</button>
+        </form>
+    </header>
+</body>
+
+</html>
