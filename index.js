@@ -173,7 +173,7 @@ app
 // Laat de registratiepagina zien
 function registreren(req, res) {
     if (req.session.loggedIN) {
-        res.render('list.ejs');
+        res.redirect('list');
     } else {
         res.render('aanmelden');
     }
@@ -181,7 +181,7 @@ function registreren(req, res) {
 
 function login(req, res) {
     if (req.session.loggedIN) {
-        res.render('list.ejs');
+        res.redirect('list');
     } else {
         res.render('inloggen');
     }
@@ -205,7 +205,7 @@ function creeerGebruiker(req, res) {
                 req.session.loggedIN = true;
                 req.session.userId = user.email;
                 req.session.userName = user.voornaam;
-                res.render('list.ejs');
+                res.redirect('list');
                 console.log('Je hebt een account gemaakt');
                 console.log(user);
             }
@@ -223,7 +223,7 @@ function inloggen(req, res) {
                     req.session.loggedIN = true;
                     req.session.userId = user.email;
                     req.session.userName = user.voornaam;
-                    res.render('list.ejs');
+                    res.redirect('list');
                     console.log('Je bent ingelogd');
                 } else {
                     res.render('inloggen');
