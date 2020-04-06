@@ -238,10 +238,11 @@ function creeerGebruiker(req, res) {
     naam: req.body.naam,
     email: req.body.email,
     wachtwoord: req.body.wachtwoord,
-    geslacht: req.body.gender,
+    geslacht: req.body.geslacht,
+    dier: req.body.dier,
+    gezocht: req.body.gezocht,
     geboortedatum: req.body.geboortedatum,
     hobby: req.body.hobby,
-    gezocht: req.body.search,
     image: req.file ? req.file.filename : null
   };
   Gebruiker

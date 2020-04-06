@@ -25,14 +25,30 @@
         <br>
         <label for='geslacht'>Ik ben een:</label>
         <div class="geslacht">
-            <input type="radio" id="Man" name="gender" value="Man">
+            <input type="radio" id="Man" name="geslacht" value="Man">
             <label for="Man">Man</label><br>
 
-            <input type="radio" id="Vrouw" name="gender" value="Vrouw">
+            <input type="radio" id="Vrouw" name="geslacht" value="Vrouw">
             <label for="Vrouw">Vrouw</label><br>
 
-            <input type="radio" id="Anders" name="gender" value="Anders">
+            <input type="radio" id="Anders" name="geslacht" value="Anders">
             <label for="Anders">Anders</label><br>
+        </div>
+        <br>
+        <label for="dier">Liefelingsdier</label>
+        <input type="text" name='dier' id="dier" placeholder='kat' required>
+        <br>
+        <label for='geslacht'>Wat zoek je:</label>
+
+        <div class="geslacht">
+            <input type="radio" id="man" name="gezocht" value="man">
+            <label for="man">Man</label><br>
+
+            <input type="radio" id="vrouw" name="gezocht" value="vrouw">
+            <label for="vrouw">Vrouw</label><br>
+
+            <input type="radio" id="beide" name="gezocht" value="beide">
+            <label for="beide">Beide</label><br>
         </div>
         <br>
         <label for="geboortedatum ">Geboortedatum</label>
@@ -40,20 +56,6 @@
         <br>
         <label for='hobby'>Hobby's</label>
         <input type="text" name="hobby" placeholder="B.v dansen, tekenen" required>
-        <br>
-        <label for='geslacht'>Wat zoek je:</label>
-
-        <div class="geslacht">
-            <input type="radio" id="man" name="search" value="man">
-            <label for="man">Man</label><br>
-
-            <input type="radio" id="vrouw" name="search" value="vrouw">
-            <label for="vrouw">Vrouw</label><br>
-
-            <input type="radio" id="beide" name="search" value="beide">
-            <label for="beide">Beide</label><br>
-        </div>
-
         <br>
         <label>Voeg afbeelding toe:</label>
         <label for="file"><img id="afbeelding-toevoegen" src="/img/afbeelding.png" alt="profiel foto"></label>
