@@ -15,21 +15,21 @@ const app = express();
 const port = 8080;
 
 let db,
-    Gebruikers;
+    Gebruiker;
 
 // Database connectie via .env
-require('dotenv').config();
-const MongoClient = require('mongodb').MongoClient; // mongo database
-const uri = "mongodb+srv://" + process.env.DB_USERNAME + ":" + process.env.DB_PASSWORD + "@cluster0-k4xl3.mongodb.net/test?retryWrites=true&w=majority";
+const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
+let ObjectId = require('mongodb').ObjectID;
 
-MongoClient.connect(uri, function (err, client) {
+mongo.MongoClient.connect(url, function (err, client) {
   if (err) {
-    throw err; //Error als er geen verbinding gemaakt kan worden met de client (MongoClient)
+    console.log("err", err);
   }
-  db = client.db(process.env.DB_NAME) //Als er wel verbinding is, dan juiste info naar databese sturen
-  Gebruikers = db.collection(process.env.DB_COLLECTION);
-  Gebruikers.createIndex({ email: 1 }, { unique: true });
-});
+  db = client.db(process.env.DB_NAME);
+  Gebruiker = db.collection('user');
+  Gebruiker.createIndex({ email: 1 }, { unique: true });
+})
+
 
 // Code van Rick
 // views koppelen en routes definiëren
@@ -176,7 +176,7 @@ app
 // Laat de registratiepagina zien
 function registreren(req, res) {
     if (req.session.loggedIN) {
-        res.render('profiel');
+        res.render('list.ejs');
     } else {
         res.render('aanmelden');
     }
@@ -184,7 +184,7 @@ function registreren(req, res) {
 
 function login(req, res) {
     if (req.session.loggedIN) {
-        res.render('profiel');
+        res.render('list.ejs');
     } else {
         res.render('inloggen');
     }
@@ -201,24 +201,25 @@ function creeerGebruiker(req, res) {
         'wachtwoord': req.body.wachtwoord,
     };
     // Pusht de data + input naar database (gebruikers = collection('users'))
-    Gebruikers
+    Gebruiker
         .insertOne(user, function(err) {
             if (err) {
                 res.render('aanmelden');
-                console.log('Inloggen niet gelukt')
+                console.log('Registreren is niet gelukt')
             } else {
                 req.session.loggedIN = true;
                 req.session.userId = user.email;
                 req.session.userName = user.voornaam;
-                res.render('profiel');
-                console.log('Gebruiker toegevoegd');
+                res.render('list.ejs');
+                console.log('Je hebt een account gemaakt');
+                console.log(user);
             }
         });
 }
 // checkt of gebruiker bestaat en logt in door sessie aan te maken met de email als ID (omdat email uniek is)
 // req.Flash('class voor de div', 'het bericht') geeft dat  error/succes bericht door naar de template en daar staat weer code die het omzet naar html
 function inloggen(req, res) {
-    Gebruikers
+    Gebruiker
         .findOne({
             email: req.body.email
         })
@@ -228,15 +229,15 @@ function inloggen(req, res) {
                     req.session.loggedIN = true;
                     req.session.userId = user.email;
                     req.session.userName = user.voornaam;
-                    res.render('profiel');
-                    console.log('ingelogd als ' + req.session.userId);
+                    res.render('list.ejs');
+                    console.log('Je bent ingelogd');
                 } else {
                     res.render('inloggen');
                     console.log('Wachtwoord is incorrect');
                 }
             } else {
                 res.render('inloggen');
-                console.log('Account is niet gevonden');
+                console.log('Account niet gevonden');
             }
         })
         .catch(err => {
@@ -247,7 +248,7 @@ function inloggen(req, res) {
 function uitloggen(req, res) {
     req.session.loggedIN = false;
     res.render('inloggen');
-    console.log('U bent uitgelogd');
+    console.log('Je bent uitgelogd');
 }
 
 
