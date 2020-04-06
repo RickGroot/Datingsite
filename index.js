@@ -8,17 +8,28 @@ const slug = require('slug');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongo = require('mongodb');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
+const bcrypt = require('bcrypt');
 const app = express();
 const port = 8080;
 
-// Code van Rick
-// MongoDB koppelen, de database geeft toegang aan alle IP's
-//Dit gaat over de databese MongoDB
-const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
-let ObjectId = require('mongodb').ObjectID;
-let db = null;
+let db,
+    Gebruikers;
 
+// Database connectie via .env
+require('dotenv').config();
+const MongoClient = require('mongodb').MongoClient; // mongo database
+const uri = "mongodb+srv://" + process.env.DB_USERNAME + ":" + process.env.DB_PASSWORD + "@cluster0-k4xl3.mongodb.net/test?retryWrites=true&w=majority";
+
+MongoClient.connect(uri, function (err, client) {
+  if (err) {
+    throw err; //Error als er geen verbinding gemaakt kan worden met de client (MongoClient)
+  }
+  db = client.db(process.env.DB_NAME) //Als er wel verbinding is, dan juiste info naar databese sturen
+  Gebruikers = db.collection(process.env.DB_COLLECTION);
+  Gebruikers.createIndex({ email: 1 }, { unique: true });
+});
 
 // Code van Rick
 // views koppelen en routes definiëren
@@ -32,22 +43,16 @@ app
     .use('/vrouw', vrouw)
     .use('/man', man)
     .use('/reload', reload)
+    .use(bodyParser.json())
+    .use(express.urlencoded({ extended: false}))
     .use(bodyParser.urlencoded({extended: true}))
+    .use(cookieParser())
     .use(session({
       resave: false,
       saveUninitialized: true,
-      secret: 'secret'
+      secret: 'secret',
+      secure: true
     }));
-
-// Vanaf hier code van Rick
-// goede database ophalen
-mongo.MongoClient.connect(url, function (err, client) {
-  if (err) {
-    console.log("err", err);
-  }
-  db = client.db(process.env.DB_NAME);
-})
-
 
 // functies van pagina's, goede data in renderen
 function list(req, res, next) {
@@ -155,61 +160,95 @@ function refreshData(id, callback) {
     }
 }
 
-// Vanaf hier code van Susanne
-app.get('/', function(req, res){
-  res.redirect('/welkom')
-});
-
-app.get('/welkom', (req, res) => {
-res.render('welkom.ejs')
-});
-
-app.get('/aanmelden', (req, res) => {
-  res.render('aanmelden.ejs')
-});
-
-app.get('/inloggen', (req, res) => {
-  res.render('inloggen.ejs')
-});
-
-app.get('/profiel-inloggen.ejs', (req, res) => {
-  res.render('profiel-inloggen.ejs', req.session.profile)
-});
-
-app.get('/profiel', (req, res) => {
-  res.render('profiel.ejs', req.session.user)
-});
+app
+    .get('/', goHome)
+    // Registration
+    .get('/registration', registreren)
+    .post('/registrating', gebruikerMaken)
+    // Inloggen
+    .post('/log-in', inloggen)
+    // error404
+    .get('/logout', uitloggen)
 
 
-app.post('/aanmelden', upload.single('image'), addProfile); //Bij 'aanmelden.ejs', upload de single image (1 toegestaan) van de functie addProfile en zet het in mapje voor geuploade files
+// Laat de registratiepagina zien
+function registreren(req, res) {
+    if (req.session.loggedIN) {
+        res.render('profiel');
+    } else {
+        res.render('aanmelden');
+    }
+}
 
-function addProfile(req, res){ //Functie met request(verzoek), response(reactie)
-    req.session.user = { //Onderstaande gegevens in req.session.user zetten
-        username: req.body.userName,
-        email: req.body.email,
-        password: req.body.password,
-        name: req.body.name,
-        gender: req.body.gender,
-        birthday: req.body.birthday,
-        search: req.body.search,
-        image: req.file ? req.file.filename : null
-      };
-  db.collection('datingapp-users').insertOne(req.session.user); //Alle info die bij req.session.user hoort, naar database 'datingapp-users' sturen
-  console.log(req.session.user); //Terminal laat alle gegevens van req.session.user zien
-  res.redirect('profiel'); //Route naar volgende pagina
-};
+// Gaat naar home
+function goHome(req, res) {
+    if (req.session.loggedIN) {
+        res.render('profiel');
+    } else {
+        res.render('inloggen');
+    }
+}
+// Maakt de gebruiker aan op post
 
-app.post('/inloggen', login);
-
-function login(req, res){ 
-  req.session.profile = { 
-      username: req.body.userName,
-      password: req.body.password,
+function gebruikerMaken(req, res) {
+    let data = {
+        'voornaam': req.body.voornaam,
+        'achternaam': req.body.achternaam,
+        'geboortedatum': req.body.geboortedatum,
+        'hobby': req.body.hobby,
+        'email': req.body.email,
+        'wachtwoord': req.body.wachtwoord,
     };
-db.collection('datingapp-users').insertOne(req.session.profile);
-console.log(req.session.profile);
-res.redirect('profiel-inloggen.ejs'); 
-};
+    // Pusht de data + input naar database (gebruikers = collection('users'))
+    Gebruikers
+        .insertOne(data, function(err) {
+            if (err) {
+                res.render('aanmelden');
+                console.log('Inloggen niet gelukt')
+            } else {
+                req.session.loggedIN = true;
+                req.session.userId = data.email;
+                req.session.userName = data.voornaam;
+                res.render('profiel');
+                console.log('Gebruiker toegevoegd');
+            }
+        });
+}
+// checkt of gebruiker bestaat en logt in door sessie aan te maken met de email als ID (omdat email uniek is)
+// req.Flash('class voor de div', 'het bericht') geeft dat  error/succes bericht door naar de template en daar staat weer code die het omzet naar html
+function inloggen(req, res) {
+    Gebruikers
+        .findOne({
+            email: req.body.email
+        })
+        .then(data => {
+            if (data) {
+                if (data.wachtwoord === req.body.wachtwoord) {
+                    req.session.loggedIN = true;
+                    req.session.userId = data.email;
+                    req.session.userName = data.voornaam;
+                    res.render('profiel');
+                    console.log('ingelogd als ' + req.session.userId);
+                } else {
+                    res.render('inloggen');
+                    console.log('Wachtwoord is incorrect');
+                }
+            } else {
+                res.render('inloggen');
+                console.log('Account is niet gevonden');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+function uitloggen(req, res) {
+    req.session.loggedIN = false;
+    res.render('inloggen');
+    console.log('U bent uitgelogd');
+}
+
 
 // kleine data objecten, voor 404 error & styles
 const me = {

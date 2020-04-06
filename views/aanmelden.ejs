@@ -9,70 +9,32 @@
 </head>
 
 <body id="aanmelden">
-    <form action="/aanmelden" method="post" enctype="multipart/form-data">
 
-        <h1 class="register">Registreer</h1>
+    <form action="registrating" id="registration" method="POST">
+        <h1>Registreren</h1>
 
-            <label for="userName">Gebruikersnaam:</label>
-            <input name="userName" type="text" id="userName" required> <br>
+        <label for="voornaam">Voornaam</label>
+        <input type="text" required name='voornaam' placeholder='B.v Rob'>
+        <br>
+        <label for="achternaam ">Achternaam</label>
+        <input type="text" required name='achternaam' placeholder="B.v de Vries ">
+        <br>
+        <label for="geboortedatum ">Geboortedatum</label>
+        <input type="date" required name="geboortedatum">
+        <br>
+        <label for='hobby'>Hobby's</label>
+        <input type="text" required name="hobby" placeholder="B.v dansen, tekenen">
+        <br>
+        <label for="email">Email</label>
+        <input type="email" required name="email" minlength="6 " maxlength="60 " placeholder="B.v naam@hotmail.com ">
+        <br>
+        <label for='wachtwoord'>Wachtwoord</label>
+        <input type="password" required name="wachtwoord" minlength="8 " placeholder="Minimaal 8 tekens ">
+        <br>
 
-            <label for='email'>E-mail:</label>
-            <input id='email' type="email" name="email" required> <br>
-
-            <label for="password">Wachtwoord:</label>
-            <input id='password' type="password" name="password" pattern=".{8,}" required title="Minimaal 8 karakters"
-                required>
-            <br>
-
-            <label from='naam'>Wat is je volledige naam:</label>
-            <input name="name" type="text" required>
-            <br>
-
-            <label for='geslacht'>Ik ben een:</label>
-
-            <div class="geslacht">
-                <input type="radio" id="Man" name="gender" value="Man">
-                <label for="Man">Man</label><br>
-
-                <input type="radio" id="Vrouw" name="gender" value="Vrouw">
-                <label for="Vrouw">Vrouw</label><br>
-
-                <input type="radio" id="Anders" name="gender" value="Anders">
-                <label for="Anders">Anders</label><br>
-            </div>
-
-            <br>
-
-            <label for='datum'>Geboortedatum:</label>
-            <input name="birthday" id='datum' type="date" max="16-03-2002" required>
-
-            <br>
-
-            <label for='geslacht'>Wat zoek je:</label>
-
-            <div class="geslacht">
-                <input type="radio" id="man" name="search" value="man">
-                <label for="man">Man</label><br>
-
-                <input type="radio" id="vrouw" name="search" value="vrouw">
-                <label for="vrouw">Vrouw</label><br>
-
-                <input type="radio" id="beide" name="search" value="beide">
-                <label for="beide">Beide</label><br>
-            </div>
-
-            <br>
-
-            <label>Voeg afbeelding toe:</label>
-
-            <label for="file"><img id="afbeelding-toevoegen" src="img/afbeelding.png"
-                    alt="profiel foto"></label>
-            <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
-                style="display: none;">
-
-                <button type="submit" class="submit">Registeren</button>
-                <a id="al-een-account" href="/inloggen">Klik hier als je al een account hebt</a>
+        <input type="submit" class="submit" value="Registreren">
     </form>
+
 </body>
 
 </html>
