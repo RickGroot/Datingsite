@@ -164,12 +164,9 @@ function refreshData(id, callback) {
 
 app
     .get('/', login)
-    // Registration
     .get('/registration', registreren)
     .post('/registrating', creeerGebruiker)
-    // Inloggen
     .post('/log-in', inloggen)
-    // error404
     .get('/logout', uitloggen)
 
 
@@ -189,7 +186,6 @@ function login(req, res) {
         res.render('inloggen');
     }
 }
-// Maakt de gebruiker aan op post
 
 function creeerGebruiker(req, res) {
     let user = {
@@ -200,7 +196,6 @@ function creeerGebruiker(req, res) {
         'email': req.body.email,
         'wachtwoord': req.body.wachtwoord,
     };
-    // Pusht de data + input naar database (gebruikers = collection('users'))
     Gebruiker
         .insertOne(user, function(err) {
             if (err) {
@@ -216,8 +211,7 @@ function creeerGebruiker(req, res) {
             }
         });
 }
-// checkt of gebruiker bestaat en logt in door sessie aan te maken met de email als ID (omdat email uniek is)
-// req.Flash('class voor de div', 'het bericht') geeft dat  error/succes bericht door naar de template en daar staat weer code die het omzet naar html
+
 function inloggen(req, res) {
     Gebruiker
         .findOne({
@@ -251,7 +245,7 @@ function uitloggen(req, res) {
     console.log('Je bent uitgelogd');
 }
 
-
+//code Rick
 // kleine data objecten, voor 404 error & styles
 const me = {
   name: 'Rick',
