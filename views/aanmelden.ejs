@@ -10,7 +10,7 @@
 
 <body id="aanmelden">
 
-    <form action="registrating" id="registration" method="POST">
+    <form action="aanmelden" id="registration" enctype="multipart/form-data" method="POST">
         <h1 class="register">Registreren</h1>
 
         <label for="voornaam">Voornaam</label>
@@ -31,9 +31,15 @@
         <label for='wachtwoord'>Wachtwoord</label>
         <input type="password" id='password' name="wachtwoord" minlength="8 " placeholder="Minimaal 8 tekens " required>
         <br>
+        <label>Voeg afbeelding toe:</label>
+            <label for="file"><img id="afbeelding-toevoegen" src="/img/afbeelding.png"
+                    alt="profiel foto"></label>
+            <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+                style="display: none;">
+                <br>
 
         <input type="submit" class="submit" value="Registreren">
-        <a id="al-een-account" href="/login">Klik hier als je al een account hebt</a>
+        <a id="al-een-account" href="/inloggen">Klik hier als je al een account hebt</a>
     </form>
 
 </body>

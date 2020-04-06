@@ -161,15 +161,15 @@ function refreshData(id, callback) {
 }
 
 //code van Susanne
-app.get('/', function(req, res){ //Zodat de eerste pagina het meteen doet
+app.get('/', function(req, res){ 
   res.redirect('/welkom')
 });
 
-app.get('/welkom', (req, res) => { //Waar de server heen navigeert in de browser: in de browser komt '/welkom' te staan en dat is document 'welkom.ejs'.
+app.get('/welkom', function(req, res){ 
 res.render('welkom.ejs')
 });
 
-app.get('/registration', registreren)
+app.get('/aanmelden', registreren)
 
 function registreren(req, res) {
     if (req.session.loggedIN) {
@@ -179,7 +179,7 @@ function registreren(req, res) {
     }
 }
 
-app.get('/login', login)
+app.get('/inloggen', login)
 
 function login(req, res) {
     if (req.session.loggedIN) {
@@ -189,16 +189,17 @@ function login(req, res) {
     }
 }
 
-app.post('/registrating', creeerGebruiker)
+app.post('/aanmelden', upload.single('image'), creeerGebruiker)
 
 function creeerGebruiker(req, res) {
     let user = {
-        'voornaam': req.body.voornaam,
-        'achternaam': req.body.achternaam,
-        'geboortedatum': req.body.geboortedatum,
-        'hobby': req.body.hobby,
-        'email': req.body.email,
-        'wachtwoord': req.body.wachtwoord,
+        voornaam: req.body.voornaam,
+        achternaam: req.body.achternaam,
+        geboortedatum: req.body.geboortedatum,
+        hobby: req.body.hobby,
+        email: req.body.email,
+        wachtwoord: req.body.wachtwoord,
+        image: req.file ? req.file.filename : null
     };
     Gebruiker
         .insertOne(user, function(err) {
@@ -216,7 +217,7 @@ function creeerGebruiker(req, res) {
         });
 }
 
-app.post('/log-in', inloggen)
+app.post('/inloggen', inloggen)
 
 function inloggen(req, res) {
     Gebruiker
@@ -245,11 +246,11 @@ function inloggen(req, res) {
         });
 }
 
-app.get('/logout', uitloggen)
+app.get('/uitloggen', uitloggen)
 
 function uitloggen(req, res) {
     req.session.loggedIN = false;
-    res.render('inloggen');
+    res.render('welkom');
     console.log('Je bent uitgelogd');
 }
 
