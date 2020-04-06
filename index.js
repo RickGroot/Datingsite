@@ -161,16 +161,16 @@ function refreshData(id, callback) {
 }
 
 //code van Susanne
+app.get('/', function(req, res){ //Zodat de eerste pagina het meteen doet
+  res.redirect('/welkom')
+});
 
-app
-    .get('/', login)
-    .get('/registration', registreren)
-    .post('/registrating', creeerGebruiker)
-    .post('/log-in', inloggen)
-    .get('/logout', uitloggen)
+app.get('/welkom', (req, res) => { //Waar de server heen navigeert in de browser: in de browser komt '/welkom' te staan en dat is document 'welkom.ejs'.
+res.render('welkom.ejs')
+});
 
+app.get('/registration', registreren)
 
-// Laat de registratiepagina zien
 function registreren(req, res) {
     if (req.session.loggedIN) {
         res.redirect('list');
@@ -179,6 +179,8 @@ function registreren(req, res) {
     }
 }
 
+app.get('/login', login)
+
 function login(req, res) {
     if (req.session.loggedIN) {
         res.redirect('list');
@@ -186,6 +188,8 @@ function login(req, res) {
         res.render('inloggen');
     }
 }
+
+app.post('/registrating', creeerGebruiker)
 
 function creeerGebruiker(req, res) {
     let user = {
@@ -211,6 +215,8 @@ function creeerGebruiker(req, res) {
             }
         });
 }
+
+app.post('/log-in', inloggen)
 
 function inloggen(req, res) {
     Gebruiker
@@ -238,6 +244,8 @@ function inloggen(req, res) {
             console.log(err);
         });
 }
+
+app.get('/logout', uitloggen)
 
 function uitloggen(req, res) {
     req.session.loggedIN = false;
