@@ -160,11 +160,13 @@ function refreshData(id, callback) {
     }
 }
 
+//code van Susanne
+
 app
-    .get('/', goHome)
+    .get('/', login)
     // Registration
     .get('/registration', registreren)
-    .post('/registrating', gebruikerMaken)
+    .post('/registrating', creeerGebruiker)
     // Inloggen
     .post('/log-in', inloggen)
     // error404
@@ -180,8 +182,7 @@ function registreren(req, res) {
     }
 }
 
-// Gaat naar home
-function goHome(req, res) {
+function login(req, res) {
     if (req.session.loggedIN) {
         res.render('profiel');
     } else {
@@ -190,8 +191,8 @@ function goHome(req, res) {
 }
 // Maakt de gebruiker aan op post
 
-function gebruikerMaken(req, res) {
-    let data = {
+function creeerGebruiker(req, res) {
+    let user = {
         'voornaam': req.body.voornaam,
         'achternaam': req.body.achternaam,
         'geboortedatum': req.body.geboortedatum,
@@ -201,14 +202,14 @@ function gebruikerMaken(req, res) {
     };
     // Pusht de data + input naar database (gebruikers = collection('users'))
     Gebruikers
-        .insertOne(data, function(err) {
+        .insertOne(user, function(err) {
             if (err) {
                 res.render('aanmelden');
                 console.log('Inloggen niet gelukt')
             } else {
                 req.session.loggedIN = true;
-                req.session.userId = data.email;
-                req.session.userName = data.voornaam;
+                req.session.userId = user.email;
+                req.session.userName = user.voornaam;
                 res.render('profiel');
                 console.log('Gebruiker toegevoegd');
             }
@@ -221,12 +222,12 @@ function inloggen(req, res) {
         .findOne({
             email: req.body.email
         })
-        .then(data => {
-            if (data) {
-                if (data.wachtwoord === req.body.wachtwoord) {
+        .then(user => {
+            if (user) {
+                if (user.wachtwoord === req.body.wachtwoord) {
                     req.session.loggedIN = true;
-                    req.session.userId = data.email;
-                    req.session.userName = data.voornaam;
+                    req.session.userId = user.email;
+                    req.session.userName = user.voornaam;
                     res.render('profiel');
                     console.log('ingelogd als ' + req.session.userId);
                 } else {
