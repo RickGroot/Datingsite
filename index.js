@@ -25,7 +25,7 @@ mongo.MongoClient.connect(url, function (err, client) {
   if (err) {
     console.log("err", err);
   }
-  db = client.db(process.env.DB_NAME);
+  db = client.db(User);
   Gebruiker = db.collection('user');
   Gebruiker.createIndex({ email: 1 }, { unique: true });
 })
