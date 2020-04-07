@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const mongo = require('mongodb');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const bcrypt = require('bcrypt');
+const argon2 = require('argon2');
 const app = express();
 const port = 8080;
 
@@ -233,11 +233,12 @@ function uitloggen(req, res) {
 
 app.post('/aanmelden', upload.single('image'), creeerGebruiker)
 
-function creeerGebruiker(req, res) {
+async function creeerGebruiker(req, res) {
+  const hash =  await argon2.hash(req.body.wachtwoord); 
   let user = {
     naam: req.body.naam,
     email: req.body.email,
-    wachtwoord: req.body.wachtwoord,
+    wachtwoord: hash,
     geslacht: req.body.geslacht,
     dier: req.body.dier,
     gezocht: req.body.gezocht,
