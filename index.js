@@ -273,11 +273,11 @@ function inloggen(req, res) {
           res.redirect('list');
           console.log('Je bent ingelogd');
         } else {
-          res.render('inloggen');
+          res.render('inloggen-wachtwoord-error');
           console.log('Wachtwoord is incorrect');
         }
       } else {
-        res.render('inloggen');
+        res.render('login-error');
         console.log('Account niet gevonden');
       }
     })
