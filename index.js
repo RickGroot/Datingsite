@@ -263,13 +263,13 @@ async function creeerGebruiker(req, res) {
 app.post('/inloggen', inloggen)
 
 function inloggen(req, res) {
-  Gebruiker
-    .findOne({
+  var password = req.body.wachtwoord;
+  Gebruiker.findOne({
       email: req.body.email
     })
     .then(user => {
       if (user) {
-        if (user.wachtwoord === req.body.wachtwoord) {
+        if (argon2.verify(user.wachtwoord, password)) {
           req.session.inloggen = true;
           res.redirect('list');
           console.log('Je bent ingelogd');
