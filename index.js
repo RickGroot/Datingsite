@@ -275,11 +275,11 @@ function inloggen(req, res) {
           console.log('Je bent ingelogd');
         } else {
           res.render('inloggen-wachtwoord-error');
-          console.log('Wachtwoord is incorrect');
+          console.log('Wachtwoord is niet goed');
         }
       } else {
         res.render('login-error');
-        console.log('Account niet gevonden');
+        console.log('Account is niet gevonden');
       }
     })
     .catch(err => {
