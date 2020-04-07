@@ -326,3 +326,13 @@ span{
     margin-left: -520px;
     width: 30px;
 }
+
+#link{
+    text-decoration: underline;
+}
+
+#tekst-link{
+    line-height: 1.7em;
+    font-size: 0.8em;
+    text-align: center;
+}
