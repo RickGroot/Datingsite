@@ -41,4 +41,5 @@ Alle data die binnenkomt van de gebruiker, wordt opgeslagen in een database. Hie
  4. Managed MongoDB Hosting | Database-as-a-Service. (z.d.). Geraadpleegd op 12 maart 2020, van https://www.mongodb.com/cloud/atlas;
  5. Embedded JavaScript templating. (z.d.). Geraadpleegd op 5 maart 2020, van https://ejs.co/;
  6. FreeCodeCamp.org. (z.d.). Geraadpleegd op 23 februari 2020, van https://www.freecodecamp.org;
+ 7. You don't need passport.js - Guide to node.js authentication. (31 mei 2019). Geraadpleegd op 6 april, van: https://softwareontheroad.com/nodejs-jwt-authentication-oauth/;
  
