@@ -10,20 +10,21 @@
     <% for (var index = 0; index < persons.length; index++) { %>
     <article>
         <div class=image><img src="<%= persons[index].img %>" alt="<%= persons[index].name %>"></div>
-        <section>
+        <section id="<%= persons[index].id %>">
             <h1><%= persons[index].name %></h1>
             <h2><%= persons[index].age %></h2>
             <h2><%= persons[index].hobby %></h2>
-            <!-- <h2><%= persons[index].city %></h2>
-            <h2><%= persons[index].looking %></h2>
-            <h2><%= persons[index].birth %></h2>
-            <h2><%= persons[index].animal %></h2>
-            <h2><%= persons[index].color %></h2> -->
-            <a href="info.html" class="more"><span id="dropdown" class="fas fa-caret-down fa-3x"></span></a>
+            <h2 class='expand hidden'>Woonplaats: <%= persons[index].city %></h2>
+            <h2 class='expand hidden'>Geslacht: <%= persons[index].geslacht %></h2>
+            <h2 class='expand hidden'>Zoekend naar: <%= persons[index].gezocht %></h2>
+            <h2 class='expand hidden'>Fav. dier: <%= persons[index].animal %></h2>
+            <h2 class='expand hidden'>Fav. kleur: <%= persons[index].color %></h2>
+            <p class="more"><span onclick="expand('<%= persons[index].id %>')" id="dropdown" class="fas fa-caret-down fa-3x"></span></p>
             <a href="<%= persons[index].id %>"><button class='match'><i class="fas fa-heart fa-3x"></i></button></a>
         </section>
     </article>
     <% } %>
 </main>
+<script src="js/interaction.js"></script>
 
 <%- include('partials/footer'); -%>
