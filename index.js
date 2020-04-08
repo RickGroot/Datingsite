@@ -2,7 +2,9 @@
 // extentions koppelen & express initialiseren
 const express = require('express');
 const multer = require('multer');
-const upload = multer({dest: 'static/upload/'});
+const upload = multer({
+  dest: 'static/upload/'
+});
 const mongoose = require('mongoose');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -13,8 +15,7 @@ const argon2 = require('argon2');
 const app = express();
 const port = 8080;
 
-let db,
-  Gebruiker;
+let db
 
 // Database connectie via .env
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
@@ -25,8 +26,7 @@ mongo.MongoClient.connect(url, function (err, client) {
     console.log("err", err);
   }
   db = client.db(process.env.DB_NAME);
-  Gebruiker = db.collection('user');
-  Gebruiker.createIndex({email: 1}, {unique: true});
+
 })
 
 
@@ -231,11 +231,11 @@ function uitloggen(req, res) {
 
 //App.post: de gebruiker stuurt data naar de server
 
-app.post('/aanmelden', upload.single('image'), creeerGebruiker)
+app.post('/aanmelden', upload.single('image'), addProfile);
 
-async function creeerGebruiker(req, res) {
-  const hash =  await argon2.hash(req.body.wachtwoord); 
-  let user = {
+async function addProfile(req, res) {
+  const hash = await argon2.hash(req.body.wachtwoord);
+  req.session.user = {
     naam: req.body.naam,
     email: req.body.email,
     wachtwoord: hash,
@@ -246,46 +246,39 @@ async function creeerGebruiker(req, res) {
     hobby: req.body.hobby,
     image: req.file ? req.file.filename : null
   };
-  Gebruiker
-    .insertOne(user, function (err) {
-      if (err) {
-        res.render('aanmelden');
-        console.log('Registreren is niet gelukt')
-      } else {
-        req.session.inloggen = true;
-        res.redirect('list');
-        console.log('Je hebt een account gemaakt');
-        console.log(user);
-      }
-    });
-}
+  db.collection('user').insertOne(req.session.user);
+  console.log(req.session.user);
+  res.redirect('list');
+};
 
 app.post('/inloggen', inloggen)
 
 function inloggen(req, res) {
-  var password = req.body.wachtwoord;
-  Gebruiker.findOne({
-      email: req.body.email
-    })
-    .then(user => {
-      if (user) {
-        if (argon2.verify(user.wachtwoord, password)) {
-          req.session.inloggen = true;
+  var wachtwoord = req.body.wachtwoord;
+
+  db.collection('user').findOne({
+    email: req.body.email
+  }, function (err, user) {
+    if (err) {
+      throw err;
+    } else if (user) {
+      argon2.verify(user.wachtwoord, wachtwoord).then(check);
+
+      function check(same) {
+        if (same) {
           res.redirect('list');
-          console.log('Je bent ingelogd');
         } else {
           res.render('inloggen-wachtwoord-error');
-          console.log('Wachtwoord is niet goed');
+          console.log('Wachtwoord matcht niet met emailadres');
         }
-      } else {
-        res.render('login-error');
-        console.log('Account is niet gevonden');
       }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    } else {
+      res.render('login-error');
+      console.log('Account is niet gevonden');
+    }
+  });
 }
+
 
 //code Rick
 // kleine data objecten, voor 404 error & styles
