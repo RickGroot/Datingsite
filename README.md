@@ -1,4 +1,4 @@
-c16f6a90d5e2.png">
+# <img width="100" alt="logo-link" src="https://user-images.githubusercontent.com/58465462/78648910-fa7e7e00-78bc-11ea-84ba-c16f6a90d5e2.png">
 Hallo allemaal! Wij zijn Max, Rick en Susanne en studeren Communicatie en multimedia design aan de HvA (2e jaars). Voor project Tech is het de bedoeling dat wij als team een datingapp/website maken, deze hebben wij gedocumenteerd in deze repository. 
 
 ## Link
