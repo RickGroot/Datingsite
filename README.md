@@ -1,5 +1,7 @@
 # <img width="100" alt="logo-link" src="https://user-images.githubusercontent.com/58465462/78648910-fa7e7e00-78bc-11ea-84ba-c16f6a90d5e2.png">
+Hallo allemaal! Wij zijn Max, Rick en Susanne en studeren Communicatie en multimedia design aan de HvA (2e jaars). Voor project Tech is het de bedoeling dat wij als team een datingapp/website maken, deze hebben wij gedocumenteerd in deze repository. 
 
+## Link
 Link is een datingapp voor jong en oud. Je kunt je gemakkelijk registreren, of natuurlijk inloggen als je al een account hebt. Wanneer je dat gedaan hebt, kom je op de overzichtspagina terecht, met allemaal potentiele matches. Om jouw potentiele match snel te vinden, kun je bovenaan de pagina filteren, zo kun je bijvoorbeeld aangeven dat hij/zij ouder dan 19 moet zijn. Als je dan een potentiele match hebt gevonden, klik je op deze persoon en kom je op zijn/haar account. Hier kun je gemakkelijk de persoon een berichtje sturen, door op het chaticoon te klikken. Veel date plezier!
 
 ** afbeeldingen van prototype **
@@ -7,7 +9,7 @@ Link is een datingapp voor jong en oud. Je kunt je gemakkelijk registreren, of n
 ## Project installeren
 1. clone de repository (in de terminal) door rechtboven aan de pagina op de groene knop te klikken: 
 ```
-$ git clone -b develop https://github.com/Susanne-Becker/Project-tech.git
+$ git clone -b develop https://github.com/Rickert41/Datingsite.git
 ```
 2. Vraag aan ons het .env bestand;
 
@@ -42,4 +44,5 @@ Alle data die binnenkomt van de gebruiker, wordt opgeslagen in een database. Hie
  5. Embedded JavaScript templating. (z.d.). Geraadpleegd op 5 maart 2020, van https://ejs.co/;
  6. FreeCodeCamp.org. (z.d.). Geraadpleegd op 23 februari 2020, van https://www.freecodecamp.org;
  7. You don't need passport.js - Guide to node.js authentication. (31 mei 2019). Geraadpleegd op 6 april, van: https://softwareontheroad.com/nodejs-jwt-authentication-oauth/;
+ 
  
