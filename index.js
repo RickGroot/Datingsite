@@ -279,10 +279,9 @@ function inloggen(req, res) {
     if (err) {
       throw err;
     } else if (user) {
-      argon2.verify(user.wachtwoord, wachtwoord).then(check);
       req.session.inloggen = true;
-
-      function check(same) {
+      argon2.verify(user.wachtwoord, wachtwoord).then(
+        function check(same){
         if (same) {
           req.session.user = {
             email: user.email,
@@ -303,13 +302,13 @@ function inloggen(req, res) {
          
         }
       }
-    } else {
+      )} else {
       res.status(404).send('account niet gevonden');
       console.log('Account niet gevonden');
      
-    }
+      }
   });
-}
+    }
 
 
 //code Rick
