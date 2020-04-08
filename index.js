@@ -298,15 +298,15 @@ function inloggen(req, res) {
         req.session.inloggen = true;
         console.log('Je bent ingelogd');
         } else {
-          res.render('inloggen-wachtwoord-error');
+          res.status(404).send('Wachtwoord is incorrect');
           console.log('Wachtwoord is incorrect');
-          req.session.inloggen = false;
+         
         }
       }
     } else {
-      res.render('login-error');
+      res.status(404).send('account niet gevonden');
       console.log('Account niet gevonden');
-      req.session.inloggen = false;
+     
     }
   });
 }
