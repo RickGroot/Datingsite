@@ -1,5 +1,7 @@
 # <img width="100" alt="logo-link" src="https://user-images.githubusercontent.com/58465462/78648910-fa7e7e00-78bc-11ea-84ba-c16f6a90d5e2.png">
+Hallo allemaal! Wij zijn Max, Rick en Susanne en studeren Communicatie en multimedia design aan de HvA (2e jaars). Voor project Tech is het de bedoeling dat wij als team een datingapp/website maken, deze hebben wij gedocumenteerd in deze repository. 
 
+## Link
 Link is een datingapp voor jong en oud. Je kunt je gemakkelijk registreren, of natuurlijk inloggen als je al een account hebt. Wanneer je dat gedaan hebt, kom je op de overzichtspagina terecht, met allemaal potentiele matches. Om jouw potentiele match snel te vinden, kun je bovenaan de pagina filteren, zo kun je bijvoorbeeld aangeven dat hij/zij ouder dan 19 moet zijn. Als je dan een potentiele match hebt gevonden, klik je op deze persoon en kom je op zijn/haar account. Hier kun je gemakkelijk de persoon een berichtje sturen, door op het chaticoon te klikken. Veel date plezier!
 
 ** afbeeldingen van prototype **
