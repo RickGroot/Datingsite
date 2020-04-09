@@ -16,8 +16,7 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-let db,
-  Gebruiker;
+let db
 
 // Database connectie via .env
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0-zuzwx.azure.mongodb.net/test?retryWrites=true&w=majority";
@@ -28,12 +27,7 @@ mongo.MongoClient.connect(url, function (err, client) {
     console.log("err", err);
   }
   db = client.db(process.env.DB_NAME);
-  Gebruiker = db.collection('user');
-  Gebruiker.createIndex({
-    email: 1
-  }, {
-    unique: true
-  });
+
 })
 
 
@@ -318,7 +312,7 @@ function inloggen(req, res) {
 
 
 io.on("connection", function(socket){
-    console.log('Iemnad is aan het chatten:', socket.id);
+    console.log('Iemand is aan het chatten:', socket.id);
 
     socket.on("chat", function(data){
         io.sockets.emit('chat', data );
