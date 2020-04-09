@@ -4,7 +4,7 @@
   "description": "week 2 opdracht",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Suus",
   "license": "ISC",
@@ -27,7 +27,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "slug": "^2.1.1"
+    "slug": "^2.1.1",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

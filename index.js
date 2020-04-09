@@ -13,7 +13,8 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const argon2 = require('argon2');
 const app = express();
-const port = 8080;
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 let db,
   Gebruiker;
@@ -78,6 +79,7 @@ function list(req, res, next) {
     }
   }
 }
+
 
 function cat(req, res, next) {
   db.collection('persons').find({
@@ -203,7 +205,7 @@ app.get('/', function (req, res) {
   res.redirect('/welkom')
 });
 
-app.get('/welkom', function (req, res) {
+app.get('/welkom', checkwelkom, function (req, res) {
   res.render('welkom.ejs')
 });
 
@@ -310,6 +312,52 @@ function inloggen(req, res) {
   });
     }
 
+  app.get('/chat', checkchat, function(req, res) {
+      res.render('chat.ejs');
+  });
+
+
+io.on("connection", function(socket){
+    console.log('Iemnad is aan het chatten:', socket.id);
+
+    socket.on("chat", function(data){
+        io.sockets.emit('chat', data );
+
+   
+    });
+
+    socket.on('typing', function(data){
+        socket.broadcast.emit('typing', data)
+    });
+});
+
+
+    app.get('/profiel', checkprofiel)
+
+
+    function checkprofiel(req,res){
+      if (req.session.inloggen) {
+        res.render('profiel.ejs', {user: req.session.user})
+      } else {
+        res.redirect('inloggen');
+      }
+    }
+
+    function checkchat(req,res){
+      if (req.session.inloggen) {
+        res.render('chat.ejs')
+      } else {
+        res.redirect('inloggen');
+      }
+    }
+
+    function checkwelkom(req, res) {
+      if (req.session.inloggen) {
+        res.redirect('list');
+      } else {
+        res.render('welkom');
+      }
+    }
 
 //code Rick
 // kleine data objecten, voor 404 error & styles
@@ -331,4 +379,6 @@ app.get('*', (req, res) => {
 });
 
 // luisteren op poort
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const server = http.listen(8080, function() {
+  console.log('Server gestart op poort: 8080');
+});
