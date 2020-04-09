@@ -148,10 +148,12 @@ section {
     max-height: 100%;
     background-color: white;
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 2vw;
     padding-bottom: 4vw;
+    transition-duration: 1s;
 }
 
 section h1 {
@@ -175,12 +177,23 @@ section button {
     right: -30px;
 }
 
-section .more {
+p.more {
     position: absolute;
-    width: 100%;
-    right: -50%;
-    bottom: 5px;
     color: black;
+}
+
+p.more.expand {
+    transform: rotate(180deg);
+    right: 220px;
+    top: 270px;
+    transition-duration: .1s;
+}
+
+p.more.expand.hidden {
+    transform: rotate(0deg);
+    right: 220px;
+    top: 110px;
+    transition-duration: .1s;
 }
 
 ul.filter {
@@ -338,11 +351,6 @@ span{
     margin-left: 0px;
 }
 
-#dropdown{
-    margin-left: -520px;
-    width: 30px;
-}
-
 #link{
     text-decoration: underline;
 }
@@ -353,6 +361,13 @@ span{
     text-align: center;
 }
 
+h2.expand.hidden{
+    display: none;
+}
+
+h2.expand{
+    display: inline;
+}
 .jouw-profiel{
     font-size: 16px;
     margin-left: 20px;
