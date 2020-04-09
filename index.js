@@ -38,10 +38,9 @@ app
   .use(express.static('./static'))
   .use('/list', list)
   .use('/cats', cat)
-  .use('/negentien', negentien)
+  .use('/achttien', achttien)
   .use('/vrouw', vrouw)
   .use('/man', man)
-  .use('/reload', reload)
   .use(bodyParser.json())
   .use(express.urlencoded({
     extended: false
@@ -93,7 +92,7 @@ function cat(req, res, next) {
 
 function vrouw(req, res, next) {
   db.collection('persons').find({
-    looking: 'Man'
+    geslacht: 'Vrouw'
   }).toArray(done)
 
   function done(err, persons) {
@@ -110,7 +109,7 @@ function vrouw(req, res, next) {
 
 function man(req, res, next) {
   db.collection('persons').find({
-    looking: 'Vrouw'
+    geslacht: 'Man'
   }).toArray(done)
 
   function done(err, persons) {
@@ -125,10 +124,10 @@ function man(req, res, next) {
   }
 }
 
-function negentien(req, res, next) {
+function achttien(req, res, next) {
   db.collection('persons').find({
     birth: {
-      $gt: new Date("1999-10-01T00:00:00.000Z")
+      $gt: new Date("1998-10-01T00:00:00.000Z")
     }
   }).toArray(done)
 
@@ -141,51 +140,6 @@ function negentien(req, res, next) {
         style: style.list
       })
     }
-  }
-}
-
-function reload(req, res) {
-  db.collection('persons').findOne({
-      name: 'Desi'
-    },
-    (err, result) => {
-      if (err) throw err;
-      const id = result._id;
-
-      refreshData(id, () => {
-        res.redirect('/list');
-      });
-    });
-}
-
-function refreshData(id, callback) {
-  let number = Math.random();
-  if (number > 0.5) {
-    db.collection('persons').updateOne({
-        _id: ObjectId(id)
-      }, {
-        $set: {
-          img: 'img/desitwo.jpg'
-        }
-      },
-      (err, result) => {
-        if (err) throw err;
-
-        callback();
-      });
-  } else {
-    db.collection('persons').updateOne({
-        _id: ObjectId(id)
-      }, {
-        $set: {
-          img: 'img/desi.jpg'
-        }
-      },
-      (err, result) => {
-        if (err) throw err;
-
-        callback();
-      });
   }
 }
 
