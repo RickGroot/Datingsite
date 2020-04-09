@@ -153,6 +153,7 @@ section {
     margin: 0;
     padding: 2vw;
     padding-bottom: 4vw;
+    transition-duration: 1s;
 }
 
 section h1 {
@@ -178,9 +179,21 @@ section button {
 
 p.more {
     position: absolute;
-    right: -250px;
-    top: 110px;
     color: black;
+}
+
+p.more.expand {
+    transform: rotate(180deg);
+    right: 220px;
+    top: 270px;
+    transition-duration: .1s;
+}
+
+p.more.expand.hidden {
+    transform: rotate(0deg);
+    right: 220px;
+    top: 110px;
+    transition-duration: .1s;
 }
 
 ul.filter {
@@ -320,11 +333,6 @@ p {
 
 span{
     margin-left: 0px;
-}
-
-#dropdown{
-    margin-left: -520px;
-    width: 30px;
 }
 
 #link{

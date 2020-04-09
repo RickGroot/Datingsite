@@ -13,10 +13,10 @@ function expand(classElem) {
     getclass(classElem);
     
     for (var i = 0; i < ID.childNodes.length; i++) {
-        if (ID.childNodes[i].className == "expand") {
+        if (ID.childNodes[i].className == "expand" || ID.childNodes[i].className == "more expand") {
             let contClass = ID.childNodes[i];
             contClass.classList.add("hidden");
-        } else if (ID.childNodes[i].className == "expand hidden") {
+        } else if (ID.childNodes[i].className == "expand hidden" || ID.childNodes[i].className == "more expand hidden") {
             let contClass = ID.childNodes[i];
             contClass.classList.remove("hidden");
         }    
