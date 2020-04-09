@@ -13,7 +13,8 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const argon2 = require('argon2');
 const app = express();
-const port = 8080;
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 let db
 
@@ -71,6 +72,7 @@ function list(req, res, next) {
     }
   }
 }
+
 
 function cat(req, res, next) {
   db.collection('persons').find({
@@ -151,7 +153,7 @@ app.get('/', function (req, res) {
   res.redirect('/welkom')
 });
 
-app.get('/welkom', function (req, res) {
+app.get('/welkom', checkwelkom, function (req, res) {
   res.render('welkom.ejs')
 });
 
@@ -185,9 +187,9 @@ function uitloggen(req, res) {
 
 //App.post: de gebruiker stuurt data naar de server
 
-app.post('/aanmelden', upload.single('image'), addProfile);
+app.post('/aanmelden', upload.single('image'), creeerGebruiker)
 
-async function addProfile(req, res) {
+async function creeerGebruiker(req, res) {
   const hash = await argon2.hash(req.body.wachtwoord);
   req.session.user = {
     naam: req.body.naam,
@@ -200,39 +202,110 @@ async function addProfile(req, res) {
     hobby: req.body.hobby,
     image: req.file ? req.file.filename : null
   };
-  db.collection('user').insertOne(req.session.user);
-  console.log(req.session.user);
-  res.redirect('list');
-};
+  db.collection('user')
+    .insertOne(req.session.user, function (err) {
+      if (err) {
+        res.render('aanmelden');
+        console.log('Registreren is niet gelukt')
+      } else {
+        req.session.inloggen = true;
+        res.redirect('list');
+        console.log('Je hebt een account gemaakt');
+        console.log(req.session.user);
+      }
+    });
+}
 
 app.post('/inloggen', inloggen)
+
 
 function inloggen(req, res) {
   var wachtwoord = req.body.wachtwoord;
 
-  db.collection('user').findOne({
-    email: req.body.email
-  }, function (err, user) {
+  db.collection('user')
+    .findOne({
+      email: req.body.email
+    }, function (err, user) {
     if (err) {
       throw err;
     } else if (user) {
-      argon2.verify(user.wachtwoord, wachtwoord).then(check);
-
-      function check(same) {
+      req.session.inloggen = true;
+      argon2.verify(user.wachtwoord, wachtwoord).then(
+        function check(same){
         if (same) {
-          res.redirect('list');
+          req.session.user = {
+            email: user.email,
+            naam: user.naam,
+            geslacht: user.geslacht,
+            dier: user.dier,
+            gezocht: user.gezocht,
+            geboortedatum: user.geboortedatum,
+            hobby: user.hobby,
+            image: user.image
+          };
+        res.redirect('list');
+        req.session.inloggen = true;
+        console.log('Je bent ingelogd');
         } else {
-          res.render('inloggen-wachtwoord-error');
-          console.log('Wachtwoord matcht niet met emailadres');
+          res.status(404).send('Wachtwoord is incorrect');
+          console.log('Wachtwoord is incorrect');
+         
         }
       }
-    } else {
-      res.render('login-error');
-      console.log('Account is niet gevonden');
-    }
+      )} else {
+      res.status(404).send('account niet gevonden');
+      console.log('Account niet gevonden');
+     
+      }
   });
-}
+    }
 
+  app.get('/chat', checkchat, function(req, res) {
+      res.render('chat.ejs');
+  });
+
+
+io.on("connection", function(socket){
+    console.log('Iemand is aan het chatten:', socket.id);
+
+    socket.on("chat", function(data){
+        io.sockets.emit('chat', data );
+
+   
+    });
+
+    socket.on('typing', function(data){
+        socket.broadcast.emit('typing', data)
+    });
+});
+
+
+    app.get('/profiel', checkprofiel)
+
+
+    function checkprofiel(req,res){
+      if (req.session.inloggen) {
+        res.render('profiel.ejs', {user: req.session.user})
+      } else {
+        res.redirect('inloggen');
+      }
+    }
+
+    function checkchat(req,res){
+      if (req.session.inloggen) {
+        res.render('chat.ejs')
+      } else {
+        res.redirect('inloggen');
+      }
+    }
+
+    function checkwelkom(req, res) {
+      if (req.session.inloggen) {
+        res.redirect('list');
+      } else {
+        res.render('welkom');
+      }
+    }
 
 //code Rick
 // kleine data objecten, voor 404 error & styles
@@ -254,4 +327,6 @@ app.get('*', (req, res) => {
 });
 
 // luisteren op poort
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const server = http.listen(8080, function() {
+  console.log('Server gestart op poort: 8080');
+});
