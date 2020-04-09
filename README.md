@@ -45,3 +45,4 @@ Alle data die binnenkomt van de gebruiker, wordt opgeslagen in een database. Hie
  6. FreeCodeCamp.org. (z.d.). Geraadpleegd op 23 februari 2020, van https://www.freecodecamp.org;
  7. You don't need passport.js - Guide to node.js authentication. (31 mei 2019). Geraadpleegd op 6 april, van: https://softwareontheroad.com/nodejs-jwt-authentication-oauth/;
  
+ 
