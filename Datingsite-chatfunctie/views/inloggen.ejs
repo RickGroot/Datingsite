@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Gegevens</title>
+</head>
+
+<body>
+    <form action="inloggen" autocomplete="off" method="POST">
+        <h1 class="register"> Login</h1>
+        <label for='email'>E-mail:</label>
+        <input type="email" required name="email" minlength="6" maxlength="60" placeholder="Email">
+        <br>
+        <label for="wachtwoord">Wachtwoord:</label>
+        <input type="password" required name="wachtwoord" placeholder="Wachtwoord">
+        <br>
+        <input type="submit" class="submit" value="inloggen">
+        <a id="al-een-account" href="/aanmelden">Heb je nog geen profiel? Klik hier!</a>
+    </form>
+
+</body>
+
+</html>

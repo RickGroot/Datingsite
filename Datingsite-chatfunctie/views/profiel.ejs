@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Gegevens</title>
+</head>
+
+<body>
+    <main>
+        <form class="profiel">
+        <h1 class="register">Jouw profiel</h1>
+        <h1><%= user.naam %></h1>
+        <h1><%= user.email %></h1>
+        <h1><%= user.geslacht %></h1>
+        <h1><%= user.dier %></h1>
+        <h1><%= user.gezocht %></h1>
+        <h1><%= user.geboortedatum %></h1>
+        <h1><%= user.hobby %></h1>
+        <img src="<%= user.image %>"></img>
+ 
+        <button type="submit" class="submit">Zoek andere singles</button>
+        <button type="submit" class="submit">bewerk gegevens</button>
+        <ul>
+            <li><a href="/uitloggen">Uitloggen</a></li>
+        </ul>
+        </form>
+    <main>
+</body>
+
+</html>
+
