@@ -148,10 +148,12 @@ section {
     max-height: 100%;
     background-color: white;
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 2vw;
     padding-bottom: 4vw;
+    transition-duration: 1s;
 }
 
 section h1 {
@@ -175,12 +177,23 @@ section button {
     right: -30px;
 }
 
-section .more {
+p.more {
     position: absolute;
-    width: 100%;
-    right: -50%;
-    bottom: 5px;
     color: black;
+}
+
+p.more.expand {
+    transform: rotate(180deg);
+    right: 220px;
+    top: 270px;
+    transition-duration: .1s;
+}
+
+p.more.expand.hidden {
+    transform: rotate(0deg);
+    right: 220px;
+    top: 110px;
+    transition-duration: .1s;
 }
 
 ul.filter {
@@ -226,12 +239,28 @@ li a {
     font-size: 1.5em;
 }
 
+#uitloggen{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
 .home{
     background-color: #f43b79;
     width: 90%;
     border-radius: 5%;
     color: white;
     margin-top: 1em;
+    margin-bottom: 0.5em;
+    padding: 1em;
+    text-align: center;
+    font-size: 0.875em;
+}
+
+.button{
+    background-color: #f43b79;
+    width: 90%;
+    border-radius: 5%;
+    color: white;
     margin-bottom: 0.5em;
     padding: 1em;
     text-align: center;
@@ -280,6 +309,7 @@ a {
     margin-top: 3%;
 }
 
+
 #welkomstekst{
     text-align: center;
     font-size: 0.8em;
@@ -322,11 +352,6 @@ span{
     margin-left: 0px;
 }
 
-#dropdown{
-    margin-left: -520px;
-    width: 30px;
-}
-
 #link{
     text-decoration: underline;
 }
@@ -337,4 +362,27 @@ span{
     text-align: center;
 }
 
+h2.expand.hidden{
+    display: none;
+}
 
+h2.expand{
+    display: inline;
+}
+.jouw-profiel{
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.jouw-profiel-optie{
+    font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+#jouw-profielfoto{
+    margin-left: 20px;
+    max-width: 310px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}

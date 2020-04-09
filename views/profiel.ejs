@@ -12,20 +12,28 @@
     <main>
         <form class="profiel">
         <h1 class="register">Jouw profiel</h1>
-        <h1><%= user.naam %></h1>
-        <h1><%= user.email %></h1>
-        <h1><%= user.geslacht %></h1>
-        <h1><%= user.dier %></h1>
-        <h1><%= user.gezocht %></h1>
-        <h1><%= user.geboortedatum %></h1>
-        <h1><%= user.hobby %></h1>
-        <img src="<%= user.image %>"></img>
+        <h1 class="jouw-profiel-optie">Gebruikersnaam:</h1>
+        <p class="jouw-profiel"><%= user.naam %></p>
+        <h1 class="jouw-profiel-optie">Email:</h1>
+        <p class="jouw-profiel"><%= user.email %></p>
+        <h1 class="jouw-profiel-optie">Geslacht:</h1>
+        <p class="jouw-profiel"><%= user.geslacht %></p>
+        <h1 class="jouw-profiel-optie">Lievelingsdier:</h1>
+        <p class="jouw-profiel"><%= user.dier %></p>
+        <h1 class="jouw-profiel-optie">Wat je zoekt:</h1>
+        <p class="jouw-profiel"><%= user.gezocht %></p>
+        <h1 class="jouw-profiel-optie">Geboortedatum:</h1>
+        <p class="jouw-profiel"><%= user.geboortedatum %></p>
+        <h1 class="jouw-profiel-optie">Hobby('s):</h1>
+        <p class="jouw-profiel"><%= user.hobby %></p>
+        <h1 class="jouw-profiel-optie">Profielfoto:</h1>
+        <img src="upload/<%= user.image %>" alt="profiel foto" id="jouw-profielfoto">
  
-        <button type="submit" class="submit">Zoek andere singles</button>
-        <button type="submit" class="submit">bewerk gegevens</button>
-        <ul>
-            <li><a href="/uitloggen">Uitloggen</a></li>
-        </ul>
+        <a href="/list"><button class="button" type="button">Zoek andere singles</button></a>
+        <a href=""><button class="button" type="button">Bewerk gegevens</button></a>
+        
+        <a id="uitloggen" href="/uitloggen">Uitloggen</a>
+
         </form>
     <main>
 </body>
