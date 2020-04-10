@@ -14,12 +14,12 @@
             <h1><%= persons[index].name %></h1>
             <h2><%= persons[index].age %></h2>
             <h2><%= persons[index].hobby %></h2>
-            <h2 class='expand hidden'>Woonplaats: <%= persons[index].city %></h2>
-            <h2 class='expand hidden'>Geslacht: <%= persons[index].geslacht %></h2>
-            <h2 class='expand hidden'>Zoekend naar: <%= persons[index].gezocht %></h2>
-            <h2 class='expand hidden'>Fav. dier: <%= persons[index].animal %></h2>
-            <h2 class='expand hidden'>Fav. kleur: <%= persons[index].color %></h2>
-            <p class="more expand hidden"><span onclick="expand('<%= persons[index].id %>')" id="dropdown" class="fas fa-caret-down fa-3x"></span></p>
+            <h2 class='expand'>Woonplaats: <%= persons[index].city %></h2>
+            <h2 class='expand'>Geslacht: <%= persons[index].geslacht %></h2>
+            <h2 class='expand'>Zoekend naar: <%= persons[index].gezocht %></h2>
+            <h2 class='expand'>Fav. dier: <%= persons[index].animal %></h2>
+            <h2 class='expand'>Fav. kleur: <%= persons[index].color %></h2>
+            <p class="more expand"><span onclick="expand('<%= persons[index].id %>')" id="dropdown" class="fas fa-caret-down fa-3x"></span></p>
             <a href="<%= persons[index].id %>"><button class='match'><i class="fas fa-heart fa-3x"></i></button></a>
         </section>
     </article>

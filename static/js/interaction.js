@@ -1,8 +1,14 @@
 // Code van Rick
 // Global scope variabelen
 var arrow = document.getElementsByClassName('more'); // hier zitten de pijlen in
-var section = document.getElementsByTagName('SECTION'); //hier zitten de sections in met class, dus section.127 t/m section.133
+var section = document.getElementsByTagName('SECTION'); // hier zitten de sections in met class, dus section.127 t/m section.133
+var hidden = document.getElementsByClassName('expand'); // alle elementen met de class 'expand'
 var ID;
+
+// For loop zorgt ervoor dat de classes worden veranderd naar hidden wanneer JS in laad, progressive enhancement
+for (var i = 0; i < hidden.length; i++) {
+    hidden[i].classList.add("hidden");
+}
 
 // Deze functie wordt aangeroepen vanuit het EJS bestand, en geeft een ID mee vanuit de database
 function expand(classElem) {
