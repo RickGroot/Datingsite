@@ -38,6 +38,7 @@ app
   .set('views', 'views')
   .use(express.static('./static'))
   .use('/list', list)
+  .use('/matches', match)
   .use('/cats', cat)
   .use('/achttien', achttien)
   .use('/vrouw', vrouw)
@@ -66,8 +67,21 @@ function list(req, res, next) {
       next(err)
     } else {
       res.render('list.ejs', {
-        persons: persons,
-        style: style.list
+        persons: persons
+      })
+    }
+  }
+}
+
+function match(req, res, next) {
+  db.collection('matches').find().toArray(done)
+
+  function done(err, matches) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('matches.ejs', {
+        matches: matches
       })
     }
   }
@@ -84,8 +98,7 @@ function cat(req, res, next) {
       next(err)
     } else {
       res.render('list.ejs', {
-        persons: persons,
-        style: style.list
+        persons: persons
       })
       // render de goede data in de list pagina/template
     }
@@ -102,8 +115,7 @@ function vrouw(req, res, next) {
       next(err)
     } else {
       res.render('list.ejs', {
-        persons: persons,
-        style: style.list
+        persons: persons
       })
     }
   }
@@ -119,8 +131,7 @@ function man(req, res, next) {
       next(err)
     } else {
       res.render('list.ejs', {
-        persons: persons,
-        style: style.list
+        persons: persons
       })
     }
   }
@@ -138,8 +149,7 @@ function achttien(req, res, next) {
       next(err)
     } else {
       res.render('list.ejs', {
-        persons: persons,
-        style: style.list
+        persons: persons
       })
     }
   }
@@ -308,22 +318,9 @@ io.on("connection", function(socket){
     }
 
 //code Rick
-// kleine data objecten, voor 404 error & styles
-const me = {
-  name: 'Rick',
-}
-
-const style = {
-  list: 'style.css',
-  notfound: 'style.css'
-}
-
 // 404 page function
 app.get('*', (req, res) => {
-  res.status(404).render('not-found.ejs', {
-    name: me.name,
-    style: style.notfound
-  });
+  res.status(404).render('not-found.ejs');
 });
 
 // luisteren op poort
