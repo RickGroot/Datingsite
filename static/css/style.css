@@ -82,9 +82,13 @@ input {
     font-size: 0.9em;
     background-color: #e9e9e9;
     border: pink;
+    margin-top: 0px;
+    margin-left: 0px;
+    display: block;
+}
+.input{
     margin-top: 3px;
     margin-left: 18px;
-    display: block;
 }
 
 input:valid {
@@ -384,4 +388,65 @@ h2.expand{
     max-width: 310px;
     margin-bottom: 20px;
     margin-top: 15px;
+}
+
+#chat{
+    max-width: 600px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
+    border-radius: 2px;
+}
+
+#chat-scherm{
+    height: 400px;
+    overflow: auto;
+    background: #f9f9f9;
+}
+
+#tekst p{
+    padding: 14px 0px;
+    margin: 0 20px;
+    border-bottom: 1px solid #e9e9e9;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+#feedback p{
+    color: rgb(148, 147, 147);
+    padding: 14px 0px;
+    margin: 0 20px;
+}
+
+#tekst strong{
+    color: #f43b79;
+    font-size: 16px;
+}
+
+#bericht{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: white;
+    font-size: 16px;
+}
+
+#send{
+    background: #f43b79;
+    color: white;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}
+
+#usr{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.chat{
+    left: 50px;
 }
