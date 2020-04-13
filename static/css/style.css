@@ -156,8 +156,11 @@ section {
     flex-direction: column;
     margin: 0;
     padding: 2vw;
-    padding-bottom: 4vw;
+    padding-bottom: 2vw;
     transition-duration: 1s;
+}
+.match-section{
+    padding-bottom: 4.5vw;
 }
 
 section h1 {
@@ -448,5 +451,14 @@ h2.expand{
     margin-top: 20px;
 }
 .chat{
-    left: 50px;
+    top: -30px;
+    left: 395px;
+    width: 70px;
+    height: 70px;
+}
+.match{
+    top:-30px;
+    left: 460px;
+    width: 70px;
+    height: 70px;
 }
