@@ -323,7 +323,8 @@ app.get('*', (req, res) => {
   res.status(404).render('not-found.ejs');
 });
 
-// luisteren op poort
-const server = http.listen(8080, function() {
-  console.log('Server gestart op poort: 8080');
+// luisteren op poort/glitch
+const port = process.env.PORT || 8080;
+const server = http.listen(port, function() {
+  console.log('Server gestart op poort ' + port);
 });
