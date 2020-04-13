@@ -1,0 +1,38 @@
+<%- include('partials/head'); -%>
+
+<title>Gegevens</title>
+
+<body>
+    <main>
+        <form class="profiel">
+        <a href="/list"><img src="img/back.png" alt="back" id="back2"></a>
+        <h1 class="register">Jouw profiel</h1>
+        <h1 class="jouw-profiel-optie">Gebruikersnaam:</h1>
+        <p class="jouw-profiel"><%= user.naam %></p>
+        <h1 class="jouw-profiel-optie">Email:</h1>
+        <p class="jouw-profiel"><%= user.email %></p>
+        <h1 class="jouw-profiel-optie">Woonplaats:</h1>
+        <p class="jouw-profiel"><%= user.woonplaats %></p>
+        <h1 class="jouw-profiel-optie">Geslacht:</h1>
+        <p class="jouw-profiel"><%= user.geslacht %></p>
+        <h1 class="jouw-profiel-optie">Lievelingsdier:</h1>
+        <p class="jouw-profiel"><%= user.dier %></p>
+        <h1 class="jouw-profiel-optie">Favouriete kleur:</h1>
+        <p class="jouw-profiel"><%= user.kleur %></p>
+        <h1 class="jouw-profiel-optie">Wat je zoekt:</h1>
+        <p class="jouw-profiel"><%= user.gezocht %></p>
+        <h1 class="jouw-profiel-optie">Geboortedatum:</h1>
+        <p class="jouw-profiel"><%= user.geboortedatum %></p>
+        <h1 class="jouw-profiel-optie">Hobby('s):</h1>
+        <p class="jouw-profiel"><%= user.hobby %></p>
+        <h1 class="jouw-profiel-optie">Profielfoto:</h1>
+        <img src="upload/<%= user.image %>" alt="profiel foto" id="jouw-profielfoto">
+ 
+        <a href="/list"><button class="button" type="button">Zoek andere singles</button></a>
+        
+        <a id="uitloggen" href="/uitloggen">Uitloggen</a>
+
+        </form>
+    <main>
+<%- include('partials/footer'); -%>
+

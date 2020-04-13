@@ -1,0 +1,18 @@
+<%- include('partials/head'); -%>
+
+<title>Gegevens</title>
+
+<body>
+    <form action="inloggen" autocomplete="off" method="POST">
+        <h1 class="register"> Login</h1>
+        <label for='email'>E-mail:</label>
+        <input type="email" class="input" required name="email" minlength="6" maxlength="60" placeholder="Email">
+        <br>
+        <label for="wachtwoord">Wachtwoord:</label>
+        <input type="password" class="input" required name="wachtwoord" placeholder="Wachtwoord">
+        <br>
+        <input type="submit" class="submit" value="inloggen">
+        <a id="al-een-account" href="/aanmelden">Heb je nog geen profiel? Klik hier!</a>
+    </form>
+
+<%- include('partials/footer'); -%>
