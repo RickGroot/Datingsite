@@ -7,52 +7,58 @@
         <h1 class="register">Registreren</h1>
 
         <label for="voornaam">Naam</label>
-        <input type="text" name='naam' id="voornaam" placeholder='John Konings' required>
+        <input type="text" name='naam' id="voornaam" class="input" placeholder='John Konings' required>
         <br>
         <label for="email">Email</label>
-        <input type="email" name="email" id='email' minlength="6 " maxlength="60 " placeholder="naam@hotmail.com "
+        <input type="email" name="email" id='email' class="input" minlength="6 " maxlength="60 " placeholder="naam@hotmail.com "
             required>
         <br>
         <label for='wachtwoord'>Wachtwoord</label>
-        <input type="password" id='password' name="wachtwoord" minlength="8 " placeholder="Minimaal 8 tekens " required>
+        <input type="password" id='password' class="input" name="wachtwoord" minlength="8 " placeholder="Minimaal 8 tekens " required>
+        <br>
+        <label for='woonplaats'>Woonplaats:</label>
+        <input type="text" name="woonplaats" placeholder="Amsterdam" class="input" required>
         <br>
         <label for='geslacht'>Ik ben een:</label>
         <div class="geslacht">
-            <input type="radio" id="Man" name="geslacht" value="Man">
+            <input type="radio" id="Man" class="input" name="geslacht" value="Man">
             <label for="Man">Man</label><br>
 
-            <input type="radio" id="Vrouw" name="geslacht" value="Vrouw">
+            <input type="radio" id="Vrouw" class="input" name="geslacht" value="Vrouw">
             <label for="Vrouw">Vrouw</label><br>
 
-            <input type="radio" id="Anders" name="geslacht" value="Anders">
+            <input type="radio" id="Anders" class="input" name="geslacht" value="Anders">
             <label for="Anders">Anders</label><br>
         </div>
         <br>
         <label for="dier">Liefelingsdier</label>
-        <input type="text" name='dier' id="dier" placeholder='kat' required>
+        <input type="text" name='dier' id="dier" class="input" placeholder='kat' required>
+        <br>
+        <label for='kleur'>Favouriete kleur:</label>
+        <input type="text" name="kleur" placeholder="Paars" class="input" required>
         <br>
         <label for='geslacht'>Wat zoek je:</label>
 
         <div class="geslacht">
-            <input type="radio" id="man" name="gezocht" value="man">
+            <input type="radio" id="man" class="input" name="gezocht" value="man">
             <label for="man">Man</label><br>
 
-            <input type="radio" id="vrouw" name="gezocht" value="vrouw">
+            <input type="radio" id="vrouw" class="input" name="gezocht" value="vrouw">
             <label for="vrouw">Vrouw</label><br>
 
-            <input type="radio" id="beide" name="gezocht" value="beide">
+            <input type="radio" id="beide" class="input" name="gezocht" value="beide">
             <label for="beide">Beide</label><br>
         </div>
         <br>
         <label for="geboortedatum ">Geboortedatum</label>
-        <input type="date" name="geboortedatum" id='datum' required>
+        <input type="date" name="geboortedatum" id='datum' class="input" required>
         <br>
         <label for='hobby'>Hobby's</label>
-        <input type="text" name="hobby" placeholder="B.v dansen, tekenen" required>
+        <input type="text" name="hobby" placeholder="Dansen, tekenen" class="input" required>
         <br>
         <label>Voeg afbeelding toe:</label>
         <label for="file"><img id="afbeelding-toevoegen" src="/img/afbeelding.png" alt="profiel foto"></label>
-        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;">
+        <input type="file" accept="image/*" name="image" id="file" class="input" onchange="loadFile(event)" style="display: none;">
         <br>
 
         <input type="submit" class="submit" value="Registreren">

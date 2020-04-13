@@ -58,17 +58,17 @@ nav img {
     margin-top: 30vh;
 }
 
-.register{
+.register {
     text-align: center;
 }
 
-h2{
+h2 {
     margin-left: 1.25em;
     font-size: 1.3125em;
     font-weight: 400;
 }
 
-label{
+label {
     color: black;
     font-size: 0.9em;
     font-weight: normal;
@@ -82,9 +82,14 @@ input {
     font-size: 0.9em;
     background-color: #e9e9e9;
     border: pink;
+    margin-top: 0px;
+    margin-left: 0px;
+    display: block;
+}
+
+.input {
     margin-top: 3px;
     margin-left: 18px;
-    display: block;
 }
 
 input:valid {
@@ -112,7 +117,7 @@ input[type=radio] {
     border: 1px solid #e9e9e9;
 }
 
-.geslacht{
+.geslacht {
     display: flex;
     justify-content: space-between;
     padding: 0.2em 0em;
@@ -152,8 +157,12 @@ section {
     flex-direction: column;
     margin: 0;
     padding: 2vw;
-    padding-bottom: 4vw;
+    padding-bottom: 2vw;
     transition-duration: 1s;
+}
+
+.match-section {
+    padding-bottom: 4.5vw;
 }
 
 section h1 {
@@ -239,12 +248,12 @@ li a {
     font-size: 1.5em;
 }
 
-#uitloggen{
+#uitloggen {
     font-size: 18px;
     margin-bottom: 20px;
 }
 
-.home{
+.home {
     background-color: #f43b79;
     width: 90%;
     border-radius: 5%;
@@ -256,7 +265,7 @@ li a {
     font-size: 0.875em;
 }
 
-.button{
+.button {
     background-color: #f43b79;
     width: 90%;
     border-radius: 5%;
@@ -267,7 +276,7 @@ li a {
     font-size: 0.875em;
 }
 
-.submit{
+.submit {
     margin-left: 18px;
     background-color: #f43b79;
     width: 90%;
@@ -280,7 +289,7 @@ li a {
     font-size: 0.875em;
 }
 
-#zoek-matches{
+#zoek-matches {
     display: block;
     font-size: 0.9375em;
     margin-bottom: 1em;
@@ -294,7 +303,7 @@ li a {
     text-align: center;
 }
 
-#al-een-account{
+#al-een-account {
     margin-top: 20px;
     margin-bottom: 40px;
     font-size: 14px;
@@ -309,19 +318,19 @@ a {
     margin-top: 3%;
 }
 
-#welkomstekst{
+#welkomstekst {
     text-align: center;
     font-size: 0.8em;
-    color:rgb(244, 59, 121);
+    color: rgb(244, 59, 121);
 }
 
-#profielfoto{
+#profielfoto {
     width: 18.75em;
     margin-left: 1.8em;
     margin-bottom: 1em;
 }
 
-#logo{
+#logo {
     width: 6.25em;
     margin-top: 3em;
     margin-left: 8.3em;
@@ -334,11 +343,11 @@ a {
     height: 400px;
 }
 
-#afbeelding-toevoegen{
+#afbeelding-toevoegen {
     width: 100px;
     height: 100px;
     display: block;
-    margin-top: 15px ;
+    margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 18px;
 }
@@ -347,41 +356,346 @@ p {
     font-size: 2em;
 }
 
-span{
+span {
     margin-left: 0px;
 }
 
-#link{
+#link {
     text-decoration: underline;
 }
 
-#tekst-link{
+#tekst-link {
     line-height: 1.7em;
     font-size: 0.8em;
     text-align: center;
 }
 
-h2.expand.hidden{
+h2.expand.hidden {
     display: none;
 }
 
-h2.expand{
+h2.expand {
     display: inline;
 }
-.jouw-profiel{
+
+.jouw-profiel {
     font-size: 16px;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 
-.jouw-profiel-optie{
+.jouw-profiel-optie {
     font-size: 22px;
     margin-bottom: 5px;
     margin-top: 15px;
     margin-left: 20px;
 }
-#jouw-profielfoto{
+
+#jouw-profielfoto {
     margin-left: 20px;
     max-width: 310px;
     margin-bottom: 20px;
     margin-top: 15px;
+}
+
+#chat {
+    max-width: 600px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+}
+
+#chat-scherm {
+    height: 400px;
+    overflow: auto;
+    background: #f9f9f9;
+}
+
+#tekst p {
+    padding: 14px 0px;
+    margin: 0 20px;
+    border-bottom: 1px solid #e9e9e9;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+#feedback p {
+    color: rgb(148, 147, 147);
+    padding: 14px 0px;
+    margin: 0 20px;
+}
+
+#tekst strong {
+    color: #f43b79;
+    font-size: 16px;
+}
+
+#bericht {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: white;
+    font-size: 16px;
+}
+
+#send {
+    background: #f43b79;
+    color: white;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}
+
+#usr {
+    margin-left: 55px;
+    margin-top: 20px;
+}
+
+.chat {
+    top: -30px;
+    left: 395px;
+    width: 70px;
+    height: 70px;
+}
+
+.match {
+    top: -30px;
+    left: 460px;
+    width: 70px;
+    height: 70px;
+}
+
+#back {
+    width: 30px;
+    position: absolute;
+    left: 15px;
+    top: 23px;
+}
+
+#back2 {
+    width: 30px;
+    position: absolute;
+    left: 15px;
+    top: 23px;
+}
+
+@media (min-width:950px) {
+    form,
+    .profiel {
+        width: 560px;
+        min-height: 65vh;
+        margin: auto;
+        margin-left: 18vw;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        background-color: white;
+        position: absolute;
+        box-shadow: 5px 5px 25px 5px rgba(78, 77, 77, 0.34);
+        padding-top: 0px;
+    }
+
+    .main{
+        width: 460px;
+        min-height: 65vh;
+        margin: auto;
+        margin-left: 28vw;
+        margin-top: 6vh;
+        margin-bottom: 5vh;
+        background-color: white;
+        position: absolute;
+        box-shadow: 5px 5px 25px 5px rgba(78, 77, 77, 0.34);
+        padding-top: 0px;
+    }
+
+    label {
+        color: black;
+        font-size: 1.2em;
+        font-weight: normal;
+        padding-bottom: 0.4em;
+        margin-left: 30px;
+    }
+
+    input {
+        width: 84%;
+        padding: 0.7em 1.2em;
+        font-size: 0.9em;
+        background-color: #e9e9e9;
+        border: pink;
+        display: block;
+    }
+    .input {
+        margin-top: 3px;
+        margin-left: 30px;
+    }
+
+    #welkomstekst {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    #afbeelding-toevoegen {
+        margin-left: 30px;
+    }
+
+    .jouw-profiel-optie {
+        font-size: 22px;
+        margin-bottom: 5px;
+        margin-top: 15px;
+        margin-left: 60px;
+    }
+
+    #jouw-profielfoto {
+        margin-left: 60px;
+        max-width: 295px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    #logo {
+        width: 6.25em;
+        margin-top: 3em;
+        margin-left: 185px;
+        margin-bottom: 0em;
+    }
+
+    .jouw-profiel {
+        font-size: 16px;
+        margin-left: 60px;
+    }
+    #back {
+        width: 30px;
+        position: absolute;
+        left: 15px;
+        top: 33px;
+    }
+    .submit {
+        margin-left: 55px;
+        width: 80%;
+        border-radius: 4%;
+    }
+
+    .home {
+        width: 80%;
+        border-radius: 4%;
+        margin-top: 10px;
+    }
+
+    #back2 {
+        left: 25px;
+    }
+}
+
+
+@media (min-width:1300px) {
+
+    form,
+    .profiel {
+        width: 860px;
+        min-height: 65vh;
+        margin: auto;
+        margin-left: 18vw;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        background-color: white;
+        position: absolute;
+        box-shadow: 5px 5px 25px 5px rgba(78, 77, 77, 0.34);
+        padding-top: 0px;
+    }
+
+    .main{
+        width: 660px;
+        min-height: 65vh;
+        margin: auto;
+        margin-left: 28vw;
+        margin-top: 7vh;
+        margin-bottom: 5vh;
+        background-color: white;
+        position: absolute;
+        box-shadow: 5px 5px 25px 5px rgba(78, 77, 77, 0.34);
+        padding-top: 0px;
+    }
+
+    label {
+        color: black;
+        font-size: 1.4em;
+        font-weight: normal;
+        padding-bottom: 0.4em;
+        margin-left: 40px;
+    }
+
+    input {
+        width: 86%;
+        padding: 0.7em 1.2em;
+        font-size: 0.9em;
+        background-color: #e9e9e9;
+        border: pink;
+        display: block;
+    }
+
+    .input {
+        margin-top: 3px;
+        margin-left: 40px;
+    }
+
+    #welkomstekst {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #afbeelding-toevoegen {
+        margin-left: 40px;
+    }
+
+    .jouw-profiel-optie {
+        font-size: 22px;
+        margin-bottom: 5px;
+        margin-top: 15px;
+        margin-left: 80px;
+    }
+
+    #jouw-profielfoto {
+        margin-left: 80px;
+        max-width: 280px;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+
+    .jouw-profiel {
+        font-size: 16px;
+        margin-left: 80px;
+    }
+
+    #logo {
+        width: 6.25em;
+        margin-top: 3em;
+        margin-left: 280px;
+        margin-bottom: 0em;
+    }
+
+    #back {
+        width: 30px;
+        position: absolute;
+        left: 15px;
+        top: 43px;
+    }
+    .submit {
+        margin-left: 120px;
+        width: 70%;
+        border-radius: 3%;
+    }
+
+    .home {
+        width: 70%;
+        border-radius: 3%;
+        margin-top: 7px;
+    }
+
+    #back2 {
+        left: 25px;
+    }
 }

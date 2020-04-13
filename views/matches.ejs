@@ -9,7 +9,7 @@
     <% for (var index = 0; index < matches.length; index++) { %>
     <article>
         <div class=image><img src="<%= matches[index].img %>" alt="<%= matches[index].name %>"></div>
-        <section id="<%= matches[index].id %>">
+        <section class="match-section" id="<%= matches[index].id %>">
             <h1><%= matches[index].name %></h1>
             <h2><%= matches[index].age %></h2>
             <h2><%= matches[index].hobby %></h2>
@@ -19,7 +19,7 @@
             <h2 class='expand'>Fav. dier: <%= matches[index].animal %></h2>
             <h2 class='expand'>Fav. kleur: <%= matches[index].color %></h2>
             <p class="more expand"><span onclick="expand('<%= matches[index].id %>')" id="dropdown" class="fas fa-caret-down fa-3x"></span></p>
-            <a href="/chat"><button class='match'><i class="fas fa-comment-alt fa-3x"></i></button></a>
+            <a href="/chat"><button class='match'><i class="fas fa-comments fa-3x"></i></button></a>
         </section>
     </article>
     <% } %>

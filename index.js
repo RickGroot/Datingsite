@@ -205,8 +205,10 @@ async function creeerGebruiker(req, res) {
     naam: req.body.naam,
     email: req.body.email,
     wachtwoord: hash,
+    woonplaats: req.body.woonplaats,
     geslacht: req.body.geslacht,
     dier: req.body.dier,
+    kleur: req.body.kleur,
     gezocht: req.body.gezocht,
     geboortedatum: req.body.geboortedatum,
     hobby: req.body.hobby,
@@ -246,8 +248,10 @@ function inloggen(req, res) {
           req.session.user = {
             email: user.email,
             naam: user.naam,
+            woonplaats: user.woonplaats,
             geslacht: user.geslacht,
             dier: user.dier,
+            kleur: user.kleur,
             gezocht: user.gezocht,
             geboortedatum: user.geboortedatum,
             hobby: user.hobby,
@@ -323,7 +327,8 @@ app.get('*', (req, res) => {
   res.status(404).render('not-found.ejs');
 });
 
-// luisteren op poort
-const server = http.listen(8080, function() {
-  console.log('Server gestart op poort: 8080');
-});
+// luisteren op poort/glitch
+const port = process.env.PORT || 8080;
+const server = http.listen(port, function() {
+  console.log('Server gestart op poort ' + port);
+}); 
