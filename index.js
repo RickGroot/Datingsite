@@ -331,4 +331,4 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || 8080;
 const server = http.listen(port, function() {
   console.log('Server gestart op poort ' + port);
-});
+}); 
