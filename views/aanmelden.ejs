@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="nl">
+<%- include('partials/head'); -%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Gegevens</title>
-</head>
-
+<title>Gegevens</title>
 <body id="aanmelden">
 
     <form action="aanmelden" id="registration" enctype="multipart/form-data" method="POST">
@@ -65,7 +58,4 @@
         <input type="submit" class="submit" value="Registreren">
         <a id="al-een-account" href="/inloggen">Klik hier als je al een account hebt</a>
     </form>
-
-</body>
-
-</html>
+<%- include('partials/footer'); -%>
