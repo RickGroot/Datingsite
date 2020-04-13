@@ -11,7 +11,7 @@ Link is een datingapp voor jong en oud. Je kunt je gemakkelijk registreren, of n
 <img width="700" alt="Schermafbeelding 2020-04-13 om 13 53 42" src="https://user-images.githubusercontent.com/58465462/79118483-569a4400-7d8e-11ea-8973-751c2a176df5.png">
 
 ### Afbeeldingen van match pagina, profiel en chatfunctie
-<img width="800" alt="Schermafbeelding 2020-04-13 om 13 54 38" src="https://user-images.githubusercontent.com/58465462/79118506-63b73300-7d8e-11ea-86ab-536e72f47e01.png">
+<img width="800" alt="Schermafbeelding 2020-04-13 om 14 00 25" src="https://user-images.githubusercontent.com/58465462/79118805-256e4380-7d8f-11ea-990f-0ef12e8b6472.png">
 
 
 ## Project installeren
