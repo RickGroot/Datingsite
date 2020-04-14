@@ -39,7 +39,7 @@ Als team hebben wij dagelijks contact via Slack, om te overleggen wie welke issu
 
 We werken op basis van de issues, daar kijken we wat er nog gedaan moet worden en hier maken we een aparte branch voor aan. Wanneer deze branch klaar is, en je dus een issue hebt afgerond, doen we een pull request naar de develop branch. We zetten dan tenminste 1 ander teamlid als code review. Als hij/zij (of hun) het goed gekeurd heeft, mergen we de branch naar de develop branch.
 
-Op deze manier houden we allemaal controle over wat er gedaan is en wat er nog gedaan moet worden. Verder houden we goed contact en doen we dit project dus echt samen.
+Op deze manier houden we allemaal controle over wat er gedaan is en wat er nog gedaan moet worden. Verder houden we goed contact en ondanks dat we allemaal onze eigen code gemaakt hebben, doen we dit project (uiteraard) echt samen en hebben wij echt samengewerkt.
 
 ## Database
 Alle data die binnenkomt van de gebruiker, wordt opgeslagen in een database. Hierdoor kan de gebruiker bijvoorbeeld inloggen, omdat de data van het registreren is opgeslagen. Wij hebben ervoor gekozen om Mongodb als database te nemen, omdat wij tijdens de lessen van Backend er al mee bezig zijn geweest. 
