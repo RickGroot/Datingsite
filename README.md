@@ -19,7 +19,7 @@ Link is een datingapp voor jong en oud. Je kunt je gemakkelijk registreren, of n
 
 2. Of clone de repository (in de terminal) door rechtboven aan de pagina op de groene knop te klikken: 
 ```
-$ git clone -b develop https://github.com/Rickert41/Datingsite.git
+$ git clone https://github.com/Rickert41/Datingsite.git
 ```
 2. Vraag aan ons het .env bestand;
 
