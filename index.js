@@ -1,20 +1,19 @@
 // Deze code is gemixt van Suus, Max en Rick, Registreer en login code is van Suus, Chatfunctie is van Max en de filter/lijst code van Rick.
 // extentions koppelen & express initialiseren
 const express = require('express');
-const multer = require('multer');
-const upload = multer({
+const multer = require('multer');              // Susanne
+const upload = multer({                        // Susanne
   dest: 'static/upload/'
 });
-const mongoose = require('mongoose');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongo = require('mongodb');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const argon2 = require('argon2');
+const argon2 = require('argon2');               // Susanne
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const http = require('http').createServer(app); // Rick
+const io = require('socket.io')(http);          // Max
 
 let db
 
@@ -30,8 +29,6 @@ mongo.MongoClient.connect(url, function (err, client) {
 
 })
 
-
-// Code van Rick
 // views koppelen en routes definiëren
 app
   .set('view engine', 'ejs')
@@ -58,6 +55,7 @@ app
     secure: true
   }));
 
+// Code van Rick
 // functies van pagina's, goede data in renderen
 function list(req, res, next) {
   db.collection('persons').find().toArray(done)
@@ -155,8 +153,7 @@ function achttien(req, res, next) {
   }
 }
 
-//code van Susanne
-
+// Code van Susanne
 //App.get: de server stuurt data naar de gebruiker
 
 app.get('/', function (req, res) {
@@ -274,6 +271,8 @@ function inloggen(req, res) {
   });
     }
 
+// Code van Max:
+
   app.get('/chat', checkchat, function(req, res) {
       res.render('chat.ejs');
   });
@@ -321,7 +320,7 @@ io.on("connection", function(socket){
       }
     }
 
-//code Rick
+// Code van Rick
 // 404 page function
 app.get('*', (req, res) => {
   res.status(404).render('not-found.ejs');
